@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /login/
+Disallow: /mypage/
+Disallow: /member/join.html
+
+Sitemap: https://www.costree.co.kr/sitemap.xml

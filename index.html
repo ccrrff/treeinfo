@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코스트리 - COSTREE</title>
+  <meta name="description" content="코스트리 - 과수·유실수·관상수·조경수·야생화·구근·원예용품 전문 쇼핑몰. 1,000여 품종 보유. TEL 1588-6891">
+  <meta name="keywords" content="코스트리, 나무, 묘목, 과수, 블루베리, 수국, 조경수, 원예, 씨앗, 구근">
+  <meta name="author" content="코스트리주식회사">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="코스트리 - 자연을 가꾸는 즐거움">
+  <meta property="og:description" content="과수·관상수·야생화·원예용품 전문 쇼핑몰. 1,000여 품종 보유.">
+  <meta property="og:image" content="refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/mag03.jpg">
+  <meta property="og:url" content="https://www.costree.co.kr">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.costree.co.kr">
+  <meta name="theme-color" content="#2E7D32">
+  <link rel="apple-touch-icon" href="refference/www.treeinfo.com/treeinfo/assets/img/head-logo.png">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Pretendard 폰트 -->
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <!-- 커스텀 CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== 기본 리셋 & 공통 ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      color: #333;
+      background: #fff;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding: 0; margin: 0; }
+
+    /* ===== [1] TOP BAR ===== */
+    #topbar {
+      background: #1A1A1A;
+      color: #aaa;
+      font-size: 12px;
+      padding: 6px 0;
+    }
+    #topbar .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0;
+    }
+    #topbar a {
+      color: #aaa;
+      padding: 0 10px;
+      border-right: 1px solid #444;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    #topbar a:first-child { border-left: 1px solid #444; }
+    #topbar a:hover { color: #fff; }
+
+    /* ===== [2] HEADER ===== */
+    #mainHeader {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      z-index: 1000;
+    }
+    #mainHeader .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* 로고 */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo-svg { width: 44px; height: 44px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-main {
+      font-size: 22px;
+      font-weight: 800;
+      color: #2E7D32;
+      letter-spacing: 2px;
+    }
+    .logo-sub {
+      font-size: 11px;
+      color: #888;
+      letter-spacing: 1px;
+    }
+
+    /* 검색 폼 */
+    #frmSearch {
+      flex: 1;
+      display: flex;
+      max-width: 480px;
+      border: 2px solid #2E7D32;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    #frmSearch input[type="text"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    #frmSearch button {
+      background: #2E7D32;
+      border: none;
+      color: #fff;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    #frmSearch button:hover { background: #1B5E20; }
+
+    /* 전체메뉴 버튼 */
+    #allMenuBtn {
+      background: #2E7D32;
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    #allMenuBtn:hover { background: #1B5E20; }
+
+    /* 햄버거 */
+    #mobileMenu {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: #2E7D32;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    /* ===== [3] 메가메뉴 ===== */
+    #megaMenu {
+      background: #fff;
+      border-top: 3px solid #2E7D32;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      z-index: 999;
+      position: sticky;
+      top: 73px;
+    }
+    #megaMenu .mega-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 20px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+    .mega-col h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2E7D32;
+      border-bottom: 2px solid #2E7D32;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+    .mega-col ul li { margin-bottom: 6px; }
+    .mega-col ul li a {
+      font-size: 13px;
+      color: #555;
+      transition: color 0.2s, padding-left 0.2s;
+      display: block;
+    }
+    .mega-col ul li a:hover {
+      color: #2E7D32;
+      padding-left: 6px;
+    }
+
+    /* ===== [4] HERO SECTION ===== */
+    #hero {
+      position: relative;
+      overflow: hidden;
+      height: 540px;
+    }
+    #heroSlider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 100%);
+    }
+    .hero-content {
+      position: absolute;
+      bottom: 80px;
+      left: 8%;
+      color: #fff;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #2E7D32;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.25s, transform 0.2s;
+      border: 2px solid transparent;
+    }
+    .btn-hero:hover {
+      background: transparent;
+      border-color: #fff;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* 슬라이더 화살표 */
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.6);
+      color: #fff;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .hero-arrow:hover { background: rgba(46,125,50,0.7); }
+    #heroPrev { left: 20px; }
+    #heroNext { right: 20px; }
+
+    /* 도트 인디케이터 */
+    #heroDots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    .hero-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.7);
+      transition: background 0.3s, transform 0.2s;
+    }
+    .hero-dot.active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+
+    /* ===== [5] CATEGORY BAR ===== */
+    #categoryBar {
+      background: #f8faf8;
+      padding: 36px 0 28px;
+      border-bottom: 1px solid #e0e8e0;
+    }
+    #categoryBar .section-label {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #2E7D32;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .category-row {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 12px;
+    }
+    .category-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 8px 14px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid #e0e8e0;
+      transition: all 0.25s;
+      text-align: center;
+    }
+    .category-item:hover {
+      border-color: #2E7D32;
+      box-shadow: 0 4px 16px rgba(46,125,50,0.12);
+      transform: translateY(-3px);
+    }
+    .category-icon-wrap {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .category-icon-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .category-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #444;
+      line-height: 1.3;
+    }
+    .category-item:hover .category-name { color: #2E7D32; }
+
+    /* ===== [6] FEATURED PRODUCTS ===== */
+    #productsSection {
+      padding: 56px 0 48px;
+      background: #fff;
+    }
+    #productsSection .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    #productsSection .section-header h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+    }
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #2E7D32, #81C784);
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    .products-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    /* 상품 카드 (JS 주입 대상 스타일) */
+    .product-card {
+      border: 1px solid #e8ece8;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .product-card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+    .product-card .product-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+    .product-card .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+    .product-card .product-info {
+      padding: 14px 16px 18px;
+    }
+    .product-card .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .product-card .product-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: #2E7D32;
+    }
+    .product-card .product-tag {
+      display: inline-block;
+      font-size: 11px;
+      background: #E8F5E9;
+      color: #2E7D32;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .product-card .btn-cart {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #2E7D32;
+      color: #fff;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .product-card .btn-cart:hover { background: #1B5E20; }
+    .product-card .product-desc {
+      font-size: 12px;
+      color: #777;
+      margin: 4px 0 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .product-card .category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #E8F5E9;
+      color: #2E7D32;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .product-card .category-badge img {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+    }
+
+    /* 더 보기 버튼 */
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 36px;
+    }
+    .btn-load-more {
+      background: #fff;
+      border: 2px solid #2E7D32;
+      color: #2E7D32;
+      padding: 12px 40px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-load-more:hover {
+      background: #2E7D32;
+      color: #fff;
+    }
+
+    /* ===== [7] INFO STRIP ===== */
+    #infoStrip {
+      background: #f4f7f4;
+      padding: 48px 0;
+      border-top: 3px solid #2E7D32;
+    }
+    .info-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      border: 1px solid #e0e8e0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .info-card-icon {
+      width: 44px;
+      height: 44px;
+      background: #E8F5E9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2E7D32;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+    .info-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e8ece8;
+    }
+    .info-phone {
+      font-size: 22px;
+      font-weight: 800;
+      color: #2E7D32;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .info-card ul li {
+      font-size: 12.5px;
+      color: #666;
+      margin-bottom: 5px;
+      padding-left: 12px;
+      position: relative;
+    }
+    .info-card ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: #2E7D32;
+    }
+
+    /* 입금정보 */
+    .bank-logo {
+      height: 30px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .bank-account {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+    .bank-holder {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* 빠른메뉴 */
+    .quick-menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .quick-menu-grid a {
+      background: #f0f7f0;
+      color: #2E7D32;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 9px 8px;
+      border-radius: 6px;
+      text-align: center;
+      border: 1px solid #c8e6c9;
+      transition: all 0.2s;
+    }
+    .quick-menu-grid a:hover {
+      background: #2E7D32;
+      color: #fff;
+      border-color: #2E7D32;
+    }
+
+    /* 새소식 */
+    .notice-list li {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 6px 0;
+    }
+    .notice-list li a {
+      font-size: 13px;
+      color: #555;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.2s;
+    }
+    .notice-list li a:hover { color: #2E7D32; }
+    .info-links { margin-top: 12px; }
+    .info-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0f7f0;
+      border: 1px solid #c8e6c9;
+      color: #2E7D32;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .info-link-btn:hover {
+      background: #2E7D32;
+      color: #fff;
+    }
+
+    /* ===== [8] FOOTER ===== */
+    #mainFooter {
+      background: #1A1A1A;
+      color: #bbb;
+    }
+    .footer-sitemap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 20px 32px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      border-bottom: 1px solid #333;
+    }
+    .footer-col h5 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #2E7D32;
+    }
+    .footer-col ul li { margin-bottom: 7px; }
+    .footer-col ul li a {
+      font-size: 12px;
+      color: #888;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: #81C784; }
+    .footer-policy {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      gap: 20px;
+    }
+    .footer-policy a {
+      font-size: 12px;
+      color: #aaa;
+      transition: color 0.2s;
+    }
+    .footer-policy a:hover { color: #fff; }
+    .footer-address {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 20px 16px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.9;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .footer-address span {
+      margin-right: 16px;
+    }
+    .footer-copyright {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      font-size: 11px;
+      color: #555;
+      text-align: center;
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 46px;
+      height: 46px;
+      background: #2E7D32;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      z-index: 9999;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .scroll-top-btn.visible { display: flex; }
+    .scroll-top-btn:hover {
+      background: #1B5E20;
+      transform: translateY(-3px);
+    }
+
+    /* ===== 반응형 ===== */
+    @media (max-width: 1100px) {
+      .category-row { grid-template-columns: repeat(4, 1fr); }
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .info-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-sitemap { grid-template-columns: repeat(3, 1fr); }
+      #megaMenu .mega-inner { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      #topbar { display: none; }
+      #mainHeader .header-inner { flex-wrap: wrap; }
+      #frmSearch { max-width: 100%; order: 3; flex: 0 0 100%; }
+      #allMenuBtn { display: none; }
+      #mobileMenu { display: block; }
+      .hero-title { font-size: 24px; }
+      #hero { height: 380px; }
+      .category-row { grid-template-columns: repeat(4, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-grid { grid-template-columns: 1fr; }
+      .footer-sitemap { grid-template-columns: repeat(2, 1fr); }
+      #megaMenu .mega-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .category-row { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .footer-sitemap { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       [1] TOP BAR
+       =========================== -->
+  <div id="topbar">
+    <div class="topbar-inner">
+      <a href="index.html">HOME</a>
+      <a href="login/login.html">로그인</a>
+      <a href="member/join.html">회원가입</a>
+      <a href="#">장바구니</a>
+      <a href="mypage/default.html">마이페이지</a>
+      <a href="mypage/default.html">주문배송조회</a>
+      <a href="customer/inquiry.html">1:1친절상담</a>
+      <a href="about/company.html">회사소개</a>
+    </div>
+  </div>
+
+  <!-- ===========================
+       [2] HEADER (sticky)
+       =========================== -->
+  <header id="mainHeader" class="sticky-top">
+    <div class="header-inner">
+
+      <!-- 로고 -->
+      <a class="navbar-brand logo" href="index.html">
+        <svg class="logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="22" fill="#E8F5E9"/>
+          <!-- 나뭇잎 형태 -->
+          <path d="M22 8 C12 8, 8 18, 14 26 C18 31, 22 34, 22 34 C22 34, 26 31, 30 26 C36 18, 32 8, 22 8Z" fill="#2E7D32"/>
+          <path d="M22 34 L22 20" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M22 24 L17 19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M22 28 L27 23" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">
+          <span class="logo-main">COSTREE</span>
+          <span class="logo-sub">코스트리</span>
+        </span>
+      </a>
+
+      <!-- 검색 폼 -->
+      <form id="frmSearch" onsubmit="return false;">
+        <input type="text" name="q" placeholder="원하시는 수목, 화훼, 상품을 검색하세요" autocomplete="off">
+        <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
+      </form>
+
+      <!-- 전체메뉴 버튼 -->
+      <button id="allMenuBtn">
+        <i class="fas fa-th"></i> 전체메뉴보기
+      </button>
+
+      <!-- 모바일 햄버거 -->
+      <button id="mobileMenu" aria-label="메뉴 열기">
+        <i class="fas fa-bars"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ===========================
+       [3] 메가메뉴
+       =========================== -->
+  <nav id="megaMenu" hidden>
+    <div class="mega-inner">
+
+      <!-- ABOUT COSTREE -->
+      <div class="mega-col">
+        <h3>ABOUT COSTREE</h3>
+        <ul>
+          <li><a href="about/greeting.html">인사말</a></li>
+          <li><a href="about/company.html">코스트리 소개</a></li>
+          <li><a href="about/business.html">사업분야</a></li>
+          <li><a href="about/activities.html">국내외 교류 및 활동</a></li>
+          <li><a href="about/history.html">연혁 및 실적</a></li>
+          <li><a href="about/location.html">회사 위치</a></li>
+        </ul>
+        <br>
+        <h3>CS CENTER</h3>
+        <ul>
+          <li><a href="customer/notice.html">고객센터 알림 사항</a></li>
+          <li><a href="customer/guide.html">이용안내</a></li>
+          <li><a href="customer/faq.html">자주 묻는 질문</a></li>
+          <li><a href="customer/inquiry.html">1:1 친절 상담</a></li>
+          <li><a href="customer/catalog.html">카탈로그 신청</a></li>
+          <li><a href="customer/catalog.html">웹카탈로그 보기</a></li>
+        </ul>
+      </div>
+
+      <!-- SHOPPING -->
+      <div class="mega-col">
+        <h3>SHOPPING</h3>
+        <ul>
+          <li><a href="shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
+          <li><a href="shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
+          <li><a href="shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
+          <li><a href="shopping/list.html?cat=야생화/다육/수생">초화/다육/수생</a></li>
+          <li><a href="shopping/list.html?cat=구근/씨앗/모종">구근/씨앗/모종</a></li>
+          <li><a href="shopping/list.html?cat=원예/조경/정원용품">원예/조경/정원용품</a></li>
+          <li><a href="shopping/list.html?cat=기타상품">기타 상품</a></li>
+        </ul>
+      </div>
+
+      <!-- NEWS & INFORMATION -->
+      <div class="mega-col">
+        <h3>NEWS &amp; INFORMATION</h3>
+        <ul>
+          <li><a href="news/notice.html">새소식 및 이벤트</a></li>
+          <li><a href="news/column.html">Mr. Lee 컬럼</a></li>
+          <li><a href="news/notice.html">코스트리와 함께..</a></li>
+          <li><a href="news/notice.html">그 곳에 가면..</a></li>
+          <li><a href="news/notice.html">오늘의 탄생화</a></li>
+          <li><a href="news/notice.html">협력생산회원 모집</a></li>
+        </ul>
+      </div>
+
+      <!-- MY PAGE -->
+      <div class="mega-col">
+        <h3>MY PAGE</h3>
+        <ul>
+          <li><a href="mypage/default.html">나의 정보 수정</a></li>
+          <li><a href="mypage/default.html">비밀번호 변경</a></li>
+          <li><a href="mypage/default.html">적립 포인트 조회</a></li>
+          <li><a href="mypage/default.html">나의 주문 내역 보기</a></li>
+          <li><a href="mypage/default.html">나의 1:1 친절 상담 보기</a></li>
+          <li><a href="mypage/default.html">추가 주문 금액 결제하기</a></li>
+        </ul>
+      </div>
+
+      <!-- CS CENTER -->
+      <div class="mega-col">
+        <h3>CS CENTER</h3>
+        <ul>
+          <li><a href="customer/notice.html">고객센터 알림 사항</a></li>
+          <li><a href="customer/guide.html">이용안내</a></li>
+          <li><a href="customer/faq.html">자주 묻는 질문</a></li>
+          <li><a href="customer/inquiry.html">1:1 친절 상담</a></li>
+          <li><a href="customer/catalog.html">카탈로그 신청</a></li>
+          <li><a href="customer/catalog.html">웹카탈로그 보기</a></li>
+        </ul>
+      </div>
+
+      <!-- MEMBER SHIP -->
+      <div class="mega-col">
+        <h3>MEMBER SHIP</h3>
+        <ul>
+          <li><a href="member/join.html">회원 가입</a></li>
+          <li><a href="member/terms.html">이용약관</a></li>
+          <li><a href="member/privacy.html">개인정보 보호정책</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ===========================
+       [4] HERO SECTION (슬라이더)
+       =========================== -->
+  <section id="hero">
+    <div id="heroSlider">
+
+      <!-- Slide 1 -->
+      <div class="hero-slide active" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/acer01.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">인기 단풍나무 품종 특선</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/bou03.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">최신 부겐빌레아 품종 특선</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/camel01.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">동백나무 원예품종 특선</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/fr026.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">사계절 연중 개화 사계향기목서</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/mag03.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">봄 꽃의 여왕! 목련 품종 특선</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/redsunflower01.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">초대륜 사계동백 레드썬플라워</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 7 -->
+      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/snowball02.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">대왕설구화(차이니즈스노우볼)</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 8 -->
+      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/syringa01.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
+          <h2 class="hero-title">라일락 인기 품종 특선</h2>
+          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div><!-- /heroSlider -->
+
+    <!-- 이전/다음 화살표 -->
+    <button id="heroPrev" class="hero-arrow" aria-label="이전 슬라이드">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button id="heroNext" class="hero-arrow" aria-label="다음 슬라이드">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- 도트 인디케이터 -->
+    <div id="heroDots">
+      <span class="hero-dot active" data-index="0"></span>
+      <span class="hero-dot" data-index="1"></span>
+      <span class="hero-dot" data-index="2"></span>
+      <span class="hero-dot" data-index="3"></span>
+      <span class="hero-dot" data-index="4"></span>
+      <span class="hero-dot" data-index="5"></span>
+      <span class="hero-dot" data-index="6"></span>
+      <span class="hero-dot" data-index="7"></span>
+    </div>
+
+  </section>
+
+  <!-- ===========================
+       [5] CATEGORY BAR
+       =========================== -->
+  <section id="categoryBar">
+    <p class="section-label">상품 카테고리</p>
+    <div class="category-row">
+
+      <a href="shopping/list.html?cat=과수/유실수" class="category-item" data-category="과수/유실수">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-01.png" alt="과수/유실수" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-apple-alt\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">과수/유실수</span>
+      </a>
+
+      <a href="shopping/list.html?cat=관상수/조경수" class="category-item" data-category="관상수/조경수">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-02.png" alt="관상수/조경수" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-tree\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">관상수/조경수</span>
+      </a>
+
+      <a href="shopping/list.html?cat=특용수/약용수" class="category-item" data-category="특용수/약용수">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-03.png" alt="특용수/약용수" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-seedling\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">특용수/약용수</span>
+      </a>
+
+      <a href="shopping/list.html?cat=야생화/다육/수생" class="category-item" data-category="야생화/다육/수생">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-04.png" alt="야생화/다육/수생" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-leaf\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">야생화/다육/수생</span>
+      </a>
+
+      <a href="shopping/list.html?cat=구근/씨앗/모종" class="category-item" data-category="구근/씨앗/모종">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-05.png" alt="구근/씨앗/모종" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-spa\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">구근/씨앗/모종</span>
+      </a>
+
+      <a href="shopping/list.html?cat=원예/조경/정원용품" class="category-item" data-category="원예/조경/정원용품">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-06.png" alt="원예/조경/정원용품" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-tools\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">원예/조경/정원용품</span>
+      </a>
+
+      <a href="shopping/list.html?cat=기타상품" class="category-item" data-category="기타상품">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-07.png" alt="기타상품" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-box-open\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">기타상품</span>
+      </a>
+
+      <a href="shopping/list.html" class="category-item" data-category="전체카테고리보기">
+        <div class="category-icon-wrap">
+          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-00.png" alt="전체카테고리보기" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-th-large\' style=\'font-size:32px;color:#2E7D32\'></i>'">
+        </div>
+        <span class="category-name">전체카테고리보기</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===========================
+       [6] FEATURED PRODUCTS
+       =========================== -->
+  <section id="productsSection">
+    <div class="section-header">
+      <h2>추천 상품</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- 상품 그리드 (JS로 카드 주입) -->
+    <div id="productsGrid" class="products-grid"></div>
+
+    <div class="load-more-wrap">
+      <button id="loadMoreBtn" class="btn-load-more">
+        더 보기 <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===========================
+       [7] INFO STRIP
+       =========================== -->
+  <section id="infoStrip">
+    <div class="info-grid">
+
+      <!-- 고객센터 카드 -->
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-phone-alt"></i></div>
+        <h4>고객센터</h4>
+        <p class="info-phone">1588-6891</p>
+        <ul>
+          <li>FAX: 041-674-6698</li>
+          <li>Email: treeinfo@naver.com</li>
+          <li>03~04월 : 08:00 ~ 20:00</li>
+          <li>05~09월 : 08:00 ~ 19:00</li>
+          <li>10~02월 : 08:00 ~ 18:00</li>
+          <li>연중무휴(설,추석 연휴제외)</li>
+        </ul>
+      </div>
+
+      <!-- 입금정보 카드 -->
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-university"></i></div>
+        <h4>입금정보</h4>
+        <img src="refference/www.treeinfo.com/treeinfo/assets/img/NH-bank.png" alt="NH농협" class="bank-logo" onerror="this.outerHTML='<p style=\'font-weight:700;color:#2E7D32;margin-bottom:8px\'>NH 농협은행</p>'">
+        <p class="bank-account">15886891-09</p>
+        <p class="bank-holder">예금주: 코스트리주식회사</p>
+      </div>
+
+      <!-- 빠른메뉴 카드 -->
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-th"></i></div>
+        <h4>빠른 메뉴</h4>
+        <div class="quick-menu-grid">
+          <a href="customer/faq.html">자주묻는질문</a>
+          <a href="customer/inquiry.html">1:1 상담</a>
+          <a href="about/location.html">오시는길</a>
+          <a href="news/notice.html">협력생산회원</a>
+          <a href="customer/catalog.html">카탈로그 신청</a>
+          <a href="customer/catalog.html">E-카탈로그</a>
+        </div>
+      </div>
+
+      <!-- 새소식 카드 -->
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-newspaper"></i></div>
+        <h4>새소식 및 이벤트</h4>
+        <ul id="noticeList" class="notice-list">
+          <li><a href="news/notice.html">봄 시즌 신품종 입고 안내</a></li>
+          <li><a href="news/notice.html">3월 특가 이벤트 공지</a></li>
+          <li><a href="news/notice.html">배송 안내 (제주/도서지역)</a></li>
+          <li><a href="news/notice.html">2024 카탈로그 신청 받습니다</a></li>
+          <li><a href="news/notice.html">봄 수목 예약 판매 시작</a></li>
+          <li><a href="news/notice.html">협력생산회원 모집 안내</a></li>
+        </ul>
+        <div class="info-links">
+          <a href="#" class="info-link-btn">
+            <img src="refference/www.treeinfo.com/treeinfo/assets/img/blog.jpg" alt="블로그" style="height:24px;vertical-align:middle;margin-right:4px" onerror="this.outerHTML='<i class=\'fab fa-naver\' style=\'color:#03c75a;margin-right:4px\'></i>'">네이버 블로그
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===========================
+       [8] FOOTER
+       =========================== -->
+  <footer id="mainFooter">
+
+    <!-- 사이트맵 -->
+    <div class="footer-sitemap">
+
+      <div class="footer-col">
+        <h5>ABOUT COSTREE</h5>
+        <ul>
+          <li><a href="about/greeting.html">인사말</a></li>
+          <li><a href="about/company.html">코스트리 소개</a></li>
+          <li><a href="about/business.html">사업분야</a></li>
+          <li><a href="about/activities.html">국내외 교류 및 활동</a></li>
+          <li><a href="about/history.html">연혁 및 실적</a></li>
+          <li><a href="about/location.html">회사 위치</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>SHOPPING</h5>
+        <ul>
+          <li><a href="shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
+          <li><a href="shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
+          <li><a href="shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
+          <li><a href="shopping/list.html?cat=야생화/다육/수생">초화/다육/수생</a></li>
+          <li><a href="shopping/list.html?cat=구근/씨앗/모종">구근/씨앗/모종</a></li>
+          <li><a href="shopping/list.html?cat=원예/조경/정원용품">원예/조경/정원용품</a></li>
+          <li><a href="shopping/list.html?cat=기타상품">기타 상품</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>NEWS &amp; INFORMATION</h5>
+        <ul>
+          <li><a href="news/notice.html">새소식 및 이벤트</a></li>
+          <li><a href="news/column.html">Mr. Lee 컬럼</a></li>
+          <li><a href="news/notice.html">코스트리와 함께..</a></li>
+          <li><a href="news/notice.html">그 곳에 가면..</a></li>
+          <li><a href="news/notice.html">협력생산회원 모집</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>MY PAGE</h5>
+        <ul>
+          <li><a href="mypage/default.html">나의 정보 수정</a></li>
+          <li><a href="mypage/default.html">비밀번호 변경</a></li>
+          <li><a href="mypage/default.html">적립 포인트 조회</a></li>
+          <li><a href="mypage/default.html">나의 주문 내역 보기</a></li>
+          <li><a href="mypage/default.html">나의 1:1 친절 상담 보기</a></li>
+          <li><a href="mypage/default.html">추가 주문 금액 결제하기</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>CS CENTER</h5>
+        <ul>
+          <li><a href="customer/notice.html">고객센터 알림 사항</a></li>
+          <li><a href="customer/guide.html">이용안내</a></li>
+          <li><a href="customer/faq.html">자주 묻는 질문</a></li>
+          <li><a href="customer/inquiry.html">1:1 친절 상담</a></li>
+          <li><a href="customer/catalog.html">카탈로그 신청</a></li>
+          <li><a href="customer/catalog.html">웹카탈로그 보기</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>MEMBER SHIP</h5>
+        <ul>
+          <li><a href="member/join.html">회원 가입</a></li>
+          <li><a href="member/terms.html">이용약관</a></li>
+          <li><a href="member/privacy.html">개인정보 보호정책</a></li>
+        </ul>
+      </div>
+
+    </div><!-- /footer-sitemap -->
+
+    <!-- 정책 링크 -->
+    <div class="footer-policy">
+      <a href="member/privacy.html">개인정보취급방침</a>
+      <a href="#">이메일주소 수집거부</a>
+    </div>
+
+    <!-- 주소 정보 -->
+    <div class="footer-address">
+      <span>코스트리주식회사</span>
+      <span>대표이사: 이철민</span>
+      <span>사업자등록번호: 316-81-18423</span>
+      <span>통신판매신고번호: 제2013-충남태안-0003호</span>
+      <br>
+      <span>충청남도 태안군 남면 진산2길 172-31</span>
+      <span>TEL: 1588-6891 / 041-674-6699</span>
+      <span>FAX: 041-674-6698</span>
+    </div>
+
+    <!-- 저작권 -->
+    <div class="footer-copyright">
+      Copyrights &copy; COSTREE Horticulture Seeds Agricultural Co. All rights reserved
+    </div>
+
+  </footer>
+
+  <!-- ===========================
+       [9] SCROLL TO TOP
+       =========================== -->
+  <button id="scrollTop" class="scroll-top-btn" title="맨 위로" aria-label="맨 위로">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ===========================
+       [10] SCRIPTS
+       =========================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- 모든 인터랙션은 js/main.js에서 처리 -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "코스트리주식회사",
+    "alternateName": "COSTREE",
+    "url": "https://www.costree.co.kr",
+    "logo": "https://www.costree.co.kr/refference/www.treeinfo.com/treeinfo/assets/img/head-logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+82-1588-6891",
+      "contactType": "customer service",
+      "availableLanguage": "Korean"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "진산2길 172-31",
+      "addressLocality": "태안군 남면",
+      "addressRegion": "충청남도",
+      "postalCode": "32181",
+      "addressCountry": "KR"
+    }
+  }
+  </script>
+
+</body>
+</html>

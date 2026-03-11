@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자주 묻는 질문 - 코스트리 COSTREE</title>
+  <meta name="description" content="코스트리 자주 묻는 질문. 배송, 환불, 주문 등 궁금증을 해결하세요.">
+  <meta property="og:title" content="자주 묻는 질문 - 코스트리">
+  <meta property="og:description" content="코스트리 자주 묻는 질문. 배송, 환불, 주문 등 궁금증을 해결하세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.costree.co.kr/customer/faq.html">
+  <link rel="canonical" href="https://www.costree.co.kr/customer/faq.html">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/subpage.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div id="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html">HOME</a>
+      <a href="../login/login.html">로그인</a>
+      <a href="../member/join.html">회원가입</a>
+      <a href="../shopping/basket.html">장바구니</a>
+      <a href="../mypage/default.html">마이페이지</a>
+      <a href="../mypage/default.html">주문배송조회</a>
+      <a href="inquiry.html">1:1친절상담</a>
+      <a href="../about/company.html">회사소개</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="mainHeader" class="sticky-top">
+    <div class="header-inner">
+      <a class="navbar-brand logo" href="../index.html">
+        <svg class="logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="22" fill="#E8F5E9"/>
+          <path d="M22 8 C12 8, 8 18, 14 26 C18 31, 22 34, 22 34 C22 34, 26 31, 30 26 C36 18, 32 8, 22 8Z" fill="#2E7D32"/>
+          <path d="M22 34 L22 20" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M22 24 L17 19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M22 28 L27 23" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">
+          <span class="logo-main">COSTREE</span>
+          <span class="logo-sub">코스트리</span>
+        </span>
+      </a>
+      <form id="frmSearch" onsubmit="return false;">
+        <input type="text" name="q" placeholder="원하시는 수목, 화훼, 상품을 검색하세요" autocomplete="off">
+        <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
+      </form>
+      <button id="allMenuBtn"><i class="fas fa-th"></i> 전체메뉴보기</button>
+      <button id="mobileMenu" aria-label="메뉴 열기"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- 메가메뉴 -->
+  <nav id="megaMenu" hidden>
+    <div class="mega-inner">
+      <div class="mega-col">
+        <h3>ABOUT COSTREE</h3>
+        <ul>
+          <li><a href="../about/greeting.html">인사말</a></li>
+          <li><a href="../about/company.html">코스트리 소개</a></li>
+          <li><a href="../about/business.html">사업분야</a></li>
+          <li><a href="../about/activities.html">국내외 교류 및 활동</a></li>
+          <li><a href="../about/history.html">연혁 및 실적</a></li>
+          <li><a href="../about/location.html">회사 위치</a></li>
+        </ul>
+      </div>
+      <div class="mega-col">
+        <h3>SHOPPING</h3>
+        <ul>
+          <li><a href="../shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
+          <li><a href="../shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
+          <li><a href="../shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
+          <li><a href="../shopping/list.html?cat=야생화/다육/수생">초화/다육/수생</a></li>
+          <li><a href="../shopping/list.html?cat=구근/씨앗/모종">구근/씨앗/모종</a></li>
+          <li><a href="../shopping/list.html?cat=원예/조경/정원용품">원예/조경/정원용품</a></li>
+        </ul>
+      </div>
+      <div class="mega-col">
+        <h3>NEWS &amp; INFORMATION</h3>
+        <ul>
+          <li><a href="../news/notice.html">새소식 및 이벤트</a></li>
+          <li><a href="../news/column.html">Mr. Lee 컬럼</a></li>
+          <li><a href="../news/notice.html">코스트리와 함께..</a></li>
+          <li><a href="../news/notice.html">협력생산회원 모집</a></li>
+        </ul>
+      </div>
+      <div class="mega-col">
+        <h3>MY PAGE</h3>
+        <ul>
+          <li><a href="../mypage/default.html">나의 정보 수정</a></li>
+          <li><a href="../mypage/default.html">비밀번호 변경</a></li>
+          <li><a href="../mypage/default.html">적립 포인트 조회</a></li>
+          <li><a href="../mypage/default.html">나의 주문 내역 보기</a></li>
+        </ul>
+      </div>
+      <div class="mega-col">
+        <h3>CS CENTER</h3>
+        <ul>
+          <li><a href="notice.html">고객센터 알림 사항</a></li>
+          <li><a href="guide.html">이용안내</a></li>
+          <li><a href="faq.html">자주 묻는 질문</a></li>
+          <li><a href="inquiry.html">1:1 친절 상담</a></li>
+          <li><a href="catalog.html">카탈로그 신청</a></li>
+          <li><a href="../customer/catalog.html">웹카탈로그 보기</a></li>
+        </ul>
+      </div>
+      <div class="mega-col">
+        <h3>MEMBER SHIP</h3>
+        <ul>
+          <li><a href="../member/join.html">회원 가입</a></li>
+          <li><a href="../member/terms.html">이용약관</a></li>
+          <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 서브페이지 히어로 -->
+  <section class="subpage-hero">
+    <div class="container-main">
+      <p class="hero-breadcrumb"><a href="../index.html">HOME</a> <span class="sep">›</span> CS CENTER <span class="sep">›</span> 자주 묻는 질문</p>
+      <h1 class="hero-page-title">자주 묻는 질문</h1>
+    </div>
+  </section>
+
+  <!-- 본문 -->
+  <section class="subpage-main">
+    <div class="container-main">
+      <div class="subpage-layout">
+
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+          <nav class="sidebar-nav">
+            <h2 class="sidebar-title">CS CENTER</h2>
+            <ul class="sidebar-menu">
+              <li><a href="notice.html">고객센터 알림사항</a></li>
+              <li><a href="guide.html">이용안내</a></li>
+              <li><a href="faq.html" class="active">자주 묻는 질문</a></li>
+              <li><a href="inquiry.html">1:1 친절 상담</a></li>
+              <li><a href="catalog.html">카탈로그 신청</a></li>
+              <li><a href="../customer/catalog.html">웹카탈로그 보기</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- 콘텐츠 -->
+        <div class="content-area">
+          <h2 class="content-title">자주 묻는 질문 (FAQ)</h2>
+          <p class="content-subtitle">고객님들이 자주 문의하시는 내용을 모았습니다.</p>
+
+          <div class="faq-list">
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q1.</span> 주문 후 배송까지 얼마나 걸리나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">일반적으로 주문 후 2~5 영업일 소요됩니다. 수목류는 계절·기후에 따라 출하 일정이 조정될 수 있으며, 제주도 및 도서산간 지역은 1~2일 추가 소요될 수 있습니다. 정확한 배송 일정은 주문 시 안내드립니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q2.</span> 화분/포트 상태로 배송되나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">대부분의 상품은 포트(화분) 상태로 배송됩니다. 일부 대형 수목이나 노지 재배 상품은 분(뿌리분) 상태로 배송될 수 있으며, 상품 상세페이지에서 배송 형태를 확인하실 수 있습니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q3.</span> 나무/수목이 도착 후 시들었어요.</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">배송 중 일시적으로 시들어 보일 수 있으나 이는 정상입니다. 수령 후 즉시 물을 충분히 주시고 반그늘에서 2~3일 안정기를 가지시면 회복됩니다. 만약 3일 이상 경과 후에도 회복되지 않는다면 고객센터(1588-6891)로 연락 부탁드립니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q4.</span> 제주도 및 도서지역 배송이 가능한가요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">가능합니다. 다만 제주도 및 도서산간 지역은 추가 배송비가 발생하며, 일부 대형 수목의 경우 배송이 제한될 수 있습니다. 정확한 배송비는 주문 시 자동 계산되며, 문의사항은 고객센터로 연락 부탁드립니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q5.</span> 환불 및 교환은 어떻게 하나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">수령 후 7일 이내에 고객센터(1588-6891)로 연락해 주세요. 식물 특성상 단순 변심에 의한 환불은 어려우며, 배송 중 파손·불량 등의 경우 사진과 함께 접수해 주시면 교환 또는 환불 처리해 드립니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q6.</span> 상품 재고 확인은 어떻게 하나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">전화(1588-6891) 또는 1:1 친절 상담을 통해 실시간 재고를 확인하실 수 있습니다. 수목류는 계절에 따라 재고 변동이 크므로, 주문 전 확인을 권장합니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q7.</span> 대량 구매 할인이 가능한가요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">10본 이상 구매 시 별도 협의를 통해 할인이 가능합니다. 조경업체, 관공서, 학교 등 대량 납품 경험이 풍부하오니 고객센터(1588-6891) 또는 이메일(treeinfo@naver.com)로 문의해 주세요.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q8.</span> 식재 방법이나 관리 방법을 알려주실 수 있나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">코스트리 네이버 블로그에서 다양한 식재·관리 정보를 확인하실 수 있으며, 1:1 상담을 통해 전문 상담사가 맞춤형 관리 방법을 안내해 드립니다. Mr. Lee 컬럼에서도 유용한 정보를 만나보실 수 있습니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q9.</span> 카탈로그는 어떻게 받을 수 있나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">카탈로그 신청 메뉴에서 무료로 신청하실 수 있습니다. 선착순 한정 배포이며, 1,000여 품종이 수록된 종합 카탈로그를 우편으로 발송해 드립니다. <a href="catalog.html" style="color:var(--primary);font-weight:600;">카탈로그 신청하기 &rarr;</a></div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q10.</span> 법인 구매나 세금계산서 발행이 되나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">가능합니다. 법인 구매 및 세금계산서 발행을 원하시면 1:1 상담 또는 고객센터(1588-6891)로 사업자등록증 사본과 함께 요청해 주세요. 견적서 발행도 가능합니다.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q11.</span> 품절 상품은 언제 입고되나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">수목류는 계절성 상품으로 품종에 따라 입고 시기가 다릅니다. 일반적으로 봄(3~5월)과 가을(9~11월)에 주요 품종이 입고되며, 특정 상품의 입고 일정은 고객센터로 문의해 주세요.</div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                <span><span class="q-badge">Q12.</span> 심는 시기가 따로 있나요?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">품종에 따라 최적의 식재 시기가 다릅니다. 일반적으로 봄(3~5월)과 가을(9~11월)이 대부분의 수목 식재에 적합합니다. 상록수는 봄, 낙엽수는 늦가을~이른 봄이 좋습니다. 자세한 내용은 상품 상세페이지 또는 고객센터에서 안내받으실 수 있습니다.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="mainFooter">
+    <div class="footer-sitemap">
+      <div class="footer-col">
+        <h5>ABOUT COSTREE</h5>
+        <ul>
+          <li><a href="../about/greeting.html">인사말</a></li>
+          <li><a href="../about/company.html">코스트리 소개</a></li>
+          <li><a href="../about/business.html">사업분야</a></li>
+          <li><a href="../about/history.html">연혁 및 실적</a></li>
+          <li><a href="../about/location.html">회사 위치</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>SHOPPING</h5>
+        <ul>
+          <li><a href="../shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
+          <li><a href="../shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
+          <li><a href="../shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
+          <li><a href="../shopping/list.html?cat=야생화/다육/수생">초화/다육/수생</a></li>
+          <li><a href="../shopping/list.html?cat=구근/씨앗/모종">구근/씨앗/모종</a></li>
+          <li><a href="../shopping/list.html?cat=원예/조경/정원용품">원예/조경/정원용품</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>NEWS &amp; INFORMATION</h5>
+        <ul>
+          <li><a href="../news/notice.html">새소식 및 이벤트</a></li>
+          <li><a href="../news/column.html">Mr. Lee 컬럼</a></li>
+          <li><a href="../news/notice.html">코스트리와 함께..</a></li>
+          <li><a href="../news/notice.html">협력생산회원 모집</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>MY PAGE</h5>
+        <ul>
+          <li><a href="../mypage/default.html">나의 정보 수정</a></li>
+          <li><a href="../mypage/default.html">비밀번호 변경</a></li>
+          <li><a href="../mypage/default.html">적립 포인트 조회</a></li>
+          <li><a href="../mypage/default.html">나의 주문 내역 보기</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>CS CENTER</h5>
+        <ul>
+          <li><a href="notice.html">고객센터 알림 사항</a></li>
+          <li><a href="guide.html">이용안내</a></li>
+          <li><a href="faq.html">자주 묻는 질문</a></li>
+          <li><a href="inquiry.html">1:1 친절 상담</a></li>
+          <li><a href="catalog.html">카탈로그 신청</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>MEMBER SHIP</h5>
+        <ul>
+          <li><a href="../member/join.html">회원 가입</a></li>
+          <li><a href="../member/terms.html">이용약관</a></li>
+          <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-policy">
+      <a href="../member/privacy.html">개인정보취급방침</a>
+      <a href="#">이메일주소 수집거부</a>
+    </div>
+    <div class="footer-address">
+      <span>코스트리주식회사</span>
+      <span>대표이사: 이철민</span>
+      <span>사업자등록번호: 316-81-18423</span>
+      <span>통신판매신고번호: 제2013-충남태안-0003호</span>
+      <br>
+      <span>충청남도 태안군 남면 진산2길 172-31</span>
+      <span>TEL: 1588-6891 / 041-674-6699</span>
+      <span>FAX: 041-674-6698</span>
+    </div>
+    <div class="footer-copyright">
+      Copyrights &copy; COSTREE Horticulture Seeds Agricultural Co. All rights reserved
+    </div>
+  </footer>
+
+  <button id="scrollTop" class="scroll-top-btn" title="맨 위로" aria-label="맨 위로">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 메가메뉴 토글
+    const allMenuBtn = document.getElementById('allMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const megaMenu = document.getElementById('megaMenu');
+    if(allMenuBtn) allMenuBtn.addEventListener('click', () => megaMenu.hidden = !megaMenu.hidden);
+    if(mobileMenu) mobileMenu.addEventListener('click', () => megaMenu.hidden = !megaMenu.hidden);
+
+    // 스크롤 탑
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+    // FAQ 아코디언
+    function toggleFaq(el) {
+      const answer = el.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+      // 모두 닫기
+      document.querySelectorAll('.faq-answer.open').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-question.open').forEach(q => q.classList.remove('open'));
+      // 현재 토글
+      if (!isOpen) {
+        answer.classList.add('open');
+        el.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>

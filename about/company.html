@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코스트리 소개 - 코스트리</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/subpage.css">
+</head>
+<body>
+
+<div id="topbar">
+  <div class="topbar-inner">
+    <a href="../index.html">HOME</a>
+    <a href="../login/login.html">로그인</a>
+    <a href="../member/join.html">회원가입</a>
+    <a href="../shopping/list.html">장바구니</a>
+    <a href="../mypage/default.html">마이페이지</a>
+    <a href="../mypage/default.html">주문배송조회</a>
+    <a href="../customer/inquiry.html">1:1친절상담</a>
+    <a href="../about/company.html">회사소개</a>
+  </div>
+</div>
+<header id="mainHeader" class="sticky-top">
+  <div class="header-inner">
+    <a class="navbar-brand logo" href="../index.html">
+      <svg class="logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="22" fill="#E8F5E9"/>
+        <path d="M22 8 C12 8, 8 18, 14 26 C18 31, 22 34, 22 34 C22 34, 26 31, 30 26 C36 18, 32 8, 22 8Z" fill="#2E7D32"/>
+        <path d="M22 34 L22 20" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M22 24 L17 19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M22 28 L27 23" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-main">COSTREE</span>
+        <span class="logo-sub">코스트리</span>
+      </span>
+    </a>
+    <form id="frmSearch" onsubmit="return false;">
+      <input type="text" name="q" placeholder="원하시는 수목, 화훼, 상품을 검색하세요" autocomplete="off">
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <button id="allMenuBtn"><i class="fas fa-th"></i> 전체메뉴보기</button>
+    <button id="mobileMenu"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+<nav id="megaMenu" hidden>
+  <div class="mega-inner">
+    <div class="mega-col">
+      <h3>ABOUT COSTREE</h3>
+      <ul>
+        <li><a href="../about/greeting.html">인사말</a></li>
+        <li><a href="../about/company.html">코스트리 소개</a></li>
+        <li><a href="../about/business.html">사업분야</a></li>
+        <li><a href="../about/activities.html">국내외 교류 및 활동</a></li>
+        <li><a href="../about/history.html">연혁 및 실적</a></li>
+        <li><a href="../about/location.html">회사 위치</a></li>
+      </ul>
+    </div>
+    <div class="mega-col">
+      <h3>SHOPPING</h3>
+      <ul>
+        <li><a href="../shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
+        <li><a href="../shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
+        <li><a href="../shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
+        <li><a href="../shopping/list.html?cat=야생화/다육/수생">초화/다육/수생</a></li>
+        <li><a href="../shopping/list.html?cat=구근/씨앗/모종">구근/씨앗/모종</a></li>
+        <li><a href="../shopping/list.html?cat=원예/조경/정원용품">원예/조경/정원용품</a></li>
+        <li><a href="../shopping/list.html">기타 상품</a></li>
+      </ul>
+    </div>
+    <div class="mega-col">
+      <h3>NEWS &amp; INFORMATION</h3>
+      <ul>
+        <li><a href="../news/notice.html">새소식 및 이벤트</a></li>
+        <li><a href="../news/column.html">Mr. Lee 컬럼</a></li>
+        <li><a href="../news/notice.html">코스트리와 함께..</a></li>
+        <li><a href="../news/notice.html">협력생산회원 모집</a></li>
+      </ul>
+    </div>
+    <div class="mega-col">
+      <h3>MY PAGE</h3>
+      <ul>
+        <li><a href="../mypage/default.html">나의 정보 수정</a></li>
+        <li><a href="../mypage/default.html">비밀번호 변경</a></li>
+        <li><a href="../mypage/default.html">적립 포인트 조회</a></li>
+        <li><a href="../mypage/default.html">나의 주문 내역</a></li>
+      </ul>
+    </div>
+    <div class="mega-col">
+      <h3>CS CENTER</h3>
+      <ul>
+        <li><a href="../customer/notice.html">고객센터 알림 사항</a></li>
+        <li><a href="../customer/guide.html">이용안내</a></li>
+        <li><a href="../customer/faq.html">자주 묻는 질문</a></li>
+        <li><a href="../customer/inquiry.html">1:1 친절 상담</a></li>
+        <li><a href="../customer/catalog.html">카탈로그 신청</a></li>
+      </ul>
+    </div>
+    <div class="mega-col">
+      <h3>MEMBER SHIP</h3>
+      <ul>
+        <li><a href="../member/join.html">회원 가입</a></li>
+        <li><a href="../member/terms.html">이용약관</a></li>
+        <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="subpage-main">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <h3 class="sidebar-title">ABOUT COSTREE</h3>
+      <ul class="sidebar-menu">
+        <li><a href="greeting.html" id="menu-greeting">인사말</a></li>
+        <li><a href="company.html" id="menu-company" class="active">코스트리 소개</a></li>
+        <li><a href="business.html" id="menu-business">사업분야</a></li>
+        <li><a href="activities.html" id="menu-activities">국내외 교류 및 활동</a></li>
+        <li><a href="history.html" id="menu-history">연혁 및 실적</a></li>
+        <li><a href="location.html" id="menu-location">회사 위치</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <section class="subpage-content">
+    <h2 class="page-title">코스트리 소개</h2>
+
+    <h3 style="font-size:16px;font-weight:700;color:#2E7D32;margin-bottom:16px;">회사 개요</h3>
+    <table class="ct-table" style="width:100%;border-collapse:collapse;margin-bottom:32px;">
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;width:160px;text-align:left;">회사명</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">코스트리주식회사</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">대표이사</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">이철민</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">사업자등록번호</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">316-81-18423</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">통신판매신고번호</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">제2013-충남태안-0003호</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">주소</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">충청남도 태안군 남면 진산2길 172-31</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">전화</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">1588-6891 / 041-674-6699</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">팩스</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">041-674-6698</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">이메일</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">treeinfo@naver.com</td></tr>
+      <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">영업시간</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;line-height:1.8;">봄(03~04월) 08~20시 / 여름(05~09월) 08~19시 / 겨울(10~02월) 08~18시<br>연중무휴(설·추석 제외)</td></tr>
+    </table>
+
+    <h3 style="font-size:16px;font-weight:700;color:#2E7D32;margin-bottom:12px;">회사 소개</h3>
+    <div class="content-body" style="margin-bottom:32px;">
+      <p>코스트리주식회사는 대한민국 대표 원예종묘 전문 기업입니다. 과수, 관상수, 특용수, 야생화, 구근, 씨앗 등 1,000여 품종의 다양한 수목과 화훼를 직접 생산·엄선하여 전국 각지로 배송하고 있습니다. 충남 태안에 위치한 본사 농장을 중심으로 전국 50여 협력 농가와 함께 안정적인 품질 관리와 공급 체계를 갖추고 있으며, 국내외 우수 신품종을 꾸준히 도입하여 고객에게 최고의 선택지를 제공합니다.</p>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:700;color:#2E7D32;margin-bottom:16px;">사업 영역</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="background:#f9fdf9;border:1px solid #c8e6c9;border-radius:10px;padding:24px 16px;text-align:center;">
+        <i class="fas fa-apple-whole" style="font-size:28px;color:#2E7D32;margin-bottom:8px;display:block;"></i>
+        <p style="font-size:13px;font-weight:600;color:#333;margin:0;">과수/유실수</p>
+      </div>
+      <div style="background:#f9fdf9;border:1px solid #c8e6c9;border-radius:10px;padding:24px 16px;text-align:center;">
+        <i class="fas fa-tree" style="font-size:28px;color:#2E7D32;margin-bottom:8px;display:block;"></i>
+        <p style="font-size:13px;font-weight:600;color:#333;margin:0;">관상수/조경수</p>
+      </div>
+      <div style="background:#f9fdf9;border:1px solid #c8e6c9;border-radius:10px;padding:24px 16px;text-align:center;">
+        <i class="fas fa-leaf" style="font-size:28px;color:#2E7D32;margin-bottom:8px;display:block;"></i>
+        <p style="font-size:13px;font-weight:600;color:#333;margin:0;">특용수/약용수</p>
+      </div>
+      <div style="background:#f9fdf9;border:1px solid #c8e6c9;border-radius:10px;padding:24px 16px;text-align:center;">
+        <i class="fas fa-seedling" style="font-size:28px;color:#2E7D32;margin-bottom:8px;display:block;"></i>
+        <p style="font-size:13px;font-weight:600;color:#333;margin:0;">야생화/다육/수생</p>
+      </div>
+      <div style="background:#f9fdf9;border:1px solid #c8e6c9;border-radius:10px;padding:24px 16px;text-align:center;">
+        <i class="fas fa-spa" style="font-size:28px;color:#2E7D32;margin-bottom:8px;display:block;"></i>
+        <p style="font-size:13px;font-weight:600;color:#333;margin:0;">구근/씨앗/모종</p>
+      </div>
+      <div style="background:#f9fdf9;border:1px solid #c8e6c9;border-radius:10px;padding:24px 16px;text-align:center;">
+        <i class="fas fa-tools" style="font-size:28px;color:#2E7D32;margin-bottom:8px;display:block;"></i>
+        <p style="font-size:13px;font-weight:600;color:#333;margin:0;">원예/조경용품</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="mainFooter">
+  <div class="footer-sitemap">
+    <div class="footer-col"><h5>ABOUT COSTREE</h5><ul>
+      <li><a href="../about/greeting.html">인사말</a></li>
+      <li><a href="../about/company.html">코스트리 소개</a></li>
+      <li><a href="../about/business.html">사업분야</a></li>
+      <li><a href="../about/activities.html">국내외 교류 및 활동</a></li>
+      <li><a href="../about/history.html">연혁 및 실적</a></li>
+      <li><a href="../about/location.html">회사 위치</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>SHOPPING</h5><ul>
+      <li><a href="../shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
+      <li><a href="../shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
+      <li><a href="../shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
+      <li><a href="../shopping/list.html">구근/씨앗/모종</a></li>
+      <li><a href="../shopping/list.html">원예/조경/정원용품</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>NEWS &amp; INFO</h5><ul>
+      <li><a href="../news/notice.html">새소식 및 이벤트</a></li>
+      <li><a href="../news/column.html">Mr. Lee 컬럼</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>MY PAGE</h5><ul>
+      <li><a href="../mypage/default.html">마이페이지</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>CS CENTER</h5><ul>
+      <li><a href="../customer/faq.html">자주 묻는 질문</a></li>
+      <li><a href="../customer/inquiry.html">1:1 친절 상담</a></li>
+      <li><a href="../customer/catalog.html">카탈로그 신청</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>MEMBER SHIP</h5><ul>
+      <li><a href="../member/join.html">회원 가입</a></li>
+      <li><a href="../member/terms.html">이용약관</a></li>
+      <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-policy">
+    <a href="../member/privacy.html">개인정보취급방침</a>
+    <a href="#">이메일주소 수집거부</a>
+  </div>
+  <div class="footer-address">
+    <span>코스트리주식회사</span> <span>대표이사: 이철민</span>
+    <span>사업자등록번호: 316-81-18423</span>
+    <span>통신판매신고번호: 제2013-충남태안-0003호</span><br>
+    <span>충청남도 태안군 남면 진산2길 172-31</span>
+    <span>TEL: 1588-6891 / 041-674-6699</span>
+    <span>FAX: 041-674-6698</span>
+  </div>
+  <div class="footer-copyright">Copyrights &copy; COSTREE Horticulture Seeds Agricultural Co. All rights reserved</div>
+</footer>
+<button id="scrollTop" class="scroll-top-btn"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+  var btn=document.getElementById('scrollTop');
+  if(btn){window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>300);});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  var allMenuBtn=document.getElementById('allMenuBtn');
+  var megaMenu=document.getElementById('megaMenu');
+  if(allMenuBtn&&megaMenu){allMenuBtn.addEventListener('click',function(){megaMenu.hidden=!megaMenu.hidden;megaMenu.style.display=megaMenu.hidden?'':'block';});document.addEventListener('click',function(e){if(!megaMenu.hidden&&!megaMenu.contains(e.target)&&!allMenuBtn.contains(e.target)){megaMenu.hidden=true;megaMenu.style.display='';}});}
+})();
+</script>
+
+</body>
+</html>

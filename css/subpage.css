@@ -1,0 +1,470 @@
+/* =============================================
+   COSTREE - Subpage Design System
+   ============================================= */
+
+:root {
+    --primary: #2E7D32;
+    --primary-dark: #1B5E20;
+    --primary-light: #E8F5E9;
+    --copper: #C8956C;
+    --bg: #FAFAF7;
+    --dark: #1A1A1A;
+    --muted: #777;
+    --border: #e8e4df;
+}
+
+/* [1] Subpage Hero Banner */
+.subpage-hero {
+    background: linear-gradient(135deg, #2D5A3D 0%, #1a3d27 100%);
+    padding: 52px 0 40px;
+    color: #fff;
+}
+
+.hero-breadcrumb {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.hero-breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.hero-breadcrumb a:hover {
+    color: #fff;
+}
+
+.hero-breadcrumb .sep {
+    margin: 0 6px;
+}
+
+.hero-page-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* [2] Subpage Layout */
+.subpage-main {
+    background: #FAFAF7;
+    padding: 48px 0 80px;
+}
+
+.subpage-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* [3] Sidebar */
+.sidebar {
+    position: sticky;
+    top: 90px;
+}
+
+.sidebar-nav {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--primary);
+    padding: 14px 20px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.sidebar-menu {
+    padding: 8px 0;
+    list-style: none;
+    margin: 0;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #555;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background: #f0f7f0;
+    font-weight: 600;
+}
+
+/* [4] Content Area */
+.content-area {
+    background: #fff;
+    border-radius: 12px;
+    padding: 36px 40px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.content-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.content-subtitle {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 32px;
+}
+
+/* [5] Info Box */
+.info-box {
+    background: #f0f7f0;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+}
+
+.info-box p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* [6] Table */
+.ct-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ct-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 16px;
+    font-size: 13px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.ct-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+}
+
+.ct-table tr:hover td {
+    background: #f9fdf9;
+}
+
+.ct-table tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+/* [7] Form */
+.ct-form .form-group {
+    margin-bottom: 20px;
+}
+
+.ct-form .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.ct-form .form-label .required {
+    color: #e53935;
+    margin-left: 2px;
+}
+
+.ct-form .form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border 0.2s;
+    box-sizing: border-box;
+}
+
+.ct-form .form-control:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.ct-form textarea.form-control {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.btn-submit {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-submit:hover {
+    background: var(--primary-dark);
+}
+
+.btn-reset {
+    background: #fff;
+    color: #555;
+    border: 1.5px solid #ddd;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* [8] Timeline */
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 36px 56px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 12px;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline-year {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.timeline-content {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* [9] FAQ Accordion */
+.faq-item {
+    border: 1px solid #e8e4df;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 16px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    transition: background 0.2s;
+}
+
+.faq-question:hover,
+.faq-question.open {
+    background: #f0f7f0;
+    color: var(--primary);
+}
+
+.faq-question .q-badge {
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 800;
+    margin-right: 10px;
+}
+
+.faq-question .faq-icon {
+    transition: transform 0.3s;
+}
+
+.faq-question.open .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #fafdf9;
+}
+
+.faq-answer.open {
+    max-height: 400px;
+}
+
+.faq-answer-inner {
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #555;
+    border-top: 1px solid #e8e4df;
+}
+
+/* [10] Board List */
+.board-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.board-num {
+    width: 40px;
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.board-title {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.board-title a:hover {
+    color: var(--primary);
+}
+
+.board-badge {
+    font-size: 11px;
+    background: var(--primary);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 6px;
+    flex-shrink: 0;
+}
+
+.board-date {
+    font-size: 12px;
+    color: #aaa;
+    flex-shrink: 0;
+}
+
+/* [11] Login Card */
+.login-card {
+    max-width: 440px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-divider {
+    text-align: center;
+    position: relative;
+    margin: 20px 0;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.login-divider::before {
+    left: 0;
+}
+
+.login-divider::after {
+    right: 0;
+}
+
+/* [12] Responsive */
+@media (max-width: 900px) {
+    .subpage-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .content-area {
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-page-title {
+        font-size: 24px;
+    }
+
+    .content-area {
+        padding: 20px 16px;
+    }
+
+    .ct-table {
+        font-size: 12px;
+    }
+}
