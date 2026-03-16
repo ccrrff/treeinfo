@@ -198,8 +198,17 @@
       e.preventDefault();
       var q = form.querySelector('input[name="q"]').value.trim();
       if (q) {
-        // 추후 검색 결과 페이지 연동
-        console.log('[COSTREE] 검색어:', q);
+        // 현재 경로에서 shopping/list.html 상대 경로 계산
+        var base = window.location.pathname;
+        var listPath;
+        if (base.indexOf('/shopping/') !== -1) {
+          listPath = 'list.html';
+        } else if (base === '/' || base.endsWith('/index.html')) {
+          listPath = 'shopping/list.html';
+        } else {
+          listPath = '../shopping/list.html';
+        }
+        window.location.href = listPath + '?q=' + encodeURIComponent(q);
       }
     });
   }
