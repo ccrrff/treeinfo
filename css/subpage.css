@@ -399,47 +399,6 @@
     flex-shrink: 0;
 }
 
-/* [11] Login Card */
-.login-card {
-    max-width: 440px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 16px;
-    padding: 48px 40px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-}
-
-.login-logo {
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.login-divider {
-    text-align: center;
-    position: relative;
-    margin: 20px 0;
-    font-size: 12px;
-    color: #aaa;
-}
-
-.login-divider::before,
-.login-divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 40%;
-    height: 1px;
-    background: #e0e0e0;
-}
-
-.login-divider::before {
-    left: 0;
-}
-
-.login-divider::after {
-    right: 0;
-}
-
 /* [12] Responsive */
 @media (max-width: 900px) {
     .subpage-layout {
@@ -448,6 +407,10 @@
 
     .sidebar {
         position: static;
+    }
+
+    .subpage-layout.search-active .content-area {
+        order: -1;
     }
 
     .content-area {

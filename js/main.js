@@ -54,6 +54,8 @@
 
   function initProducts() {
     if (typeof COSTREE_PRODUCTS === 'undefined') return;
+    var grid = document.getElementById('productsGrid');
+    if (!grid || grid.children.length > 0) return;
     renderProducts(COSTREE_PRODUCTS, false);
 
     var loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -172,28 +174,71 @@
   }
 
   /* -------------------------------------------------------
+     검색 경로 계산
+  ------------------------------------------------------- */
+  function getSearchPath() {
+    var base = window.location.pathname;
+    if (base.indexOf('/shopping/') !== -1) {
+      return 'list.html';
+    } else if (base === '/' || base.endsWith('/index.html')) {
+      return 'shopping/list.html';
+    } else {
+      return '../shopping/list.html';
+    }
+  }
+
+  function handleSearchSubmit(form) {
+    var q = form.querySelector('input[name="q"]').value.trim();
+    if (q) {
+      window.location.href = getSearchPath() + '?q=' + encodeURIComponent(q);
+    }
+  }
+
+  /* -------------------------------------------------------
      검색 폼
   ------------------------------------------------------- */
   function initSearch() {
     var form = document.getElementById('frmSearch');
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var q = form.querySelector('input[name="q"]').value.trim();
-      if (q) {
-        // 현재 경로에서 shopping/list.html 상대 경로 계산
-        var base = window.location.pathname;
-        var listPath;
-        if (base.indexOf('/shopping/') !== -1) {
-          listPath = 'list.html';
-        } else if (base === '/' || base.endsWith('/index.html')) {
-          listPath = 'shopping/list.html';
-        } else {
-          listPath = '../shopping/list.html';
-        }
-        window.location.href = listPath + '?q=' + encodeURIComponent(q);
-      }
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        handleSearchSubmit(form);
+      });
+    }
+
+    // 모바일 검색 모달
+    var modal = document.getElementById('searchModal');
+    var openBtn = document.getElementById('mobileSearchBtn');
+    var closeBtn = document.getElementById('searchModalClose');
+    var overlay = modal ? modal.querySelector('.search-modal-overlay') : null;
+    var modalForm = document.getElementById('frmSearchModal');
+
+    if (!modal || !openBtn) return;
+
+    function openModal() {
+      modal.hidden = false;
+      var input = modalForm ? modalForm.querySelector('input[name="q"]') : null;
+      if (input) setTimeout(function () { input.focus(); }, 100);
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+    }
+
+    openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
     });
+
+    if (modalForm) {
+      modalForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        handleSearchSubmit(modalForm);
+      });
+    }
   }
 
   /* -------------------------------------------------------

@@ -23,11 +23,16 @@
     .product-detail-meta { background:#f9fdf9; border-radius:8px; padding:16px 20px; margin-bottom:24px; }
     .product-detail-meta p { margin:6px 0; font-size:13px; color:#555; }
     .product-detail-meta i { color:var(--primary); margin-right:6px; }
-    .product-detail-actions { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; }
-    .btn-inquiry { background:var(--primary); color:#fff; border:none; padding:12px 28px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s; }
-    .btn-inquiry:hover { background:var(--primary-dark); }
-    .btn-catalog { background:#fff; color:var(--primary); border:2px solid var(--primary); padding:12px 28px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s; }
-    .btn-catalog:hover { background:var(--primary); color:#fff; }
+    .product-section-title { font-size:14px; font-weight:700; color:var(--primary); margin-bottom:10px; padding-bottom:8px; border-bottom:2px solid var(--primary); }
+    .spec-table { width:100%; border-collapse:collapse; margin-bottom:24px; }
+    .spec-table th, .spec-table td { padding:10px 14px; font-size:13px; border-bottom:1px solid #eee; text-align:left; }
+    .spec-table th { background:#f9fdf9; color:var(--primary); font-weight:600; width:120px; }
+    .spec-table td { color:#555; }
+    .price-table { width:100%; border-collapse:collapse; margin-bottom:8px; }
+    .price-table thead th { padding:10px 14px; font-size:13px; font-weight:600; background:var(--primary); color:#fff; text-align:center; }
+    .price-table tbody td { padding:10px 14px; font-size:13px; color:#555; text-align:center; border-bottom:1px solid #eee; }
+    .price-table tbody tr:hover { background:#f9fdf9; }
+    .price-note { font-size:12px; color:#999; margin-top:10px; margin-bottom:24px; }
     .product-notice { border:1px solid #e8f5e9; border-radius:8px; padding:16px 20px; }
     .product-notice h4 { font-size:13px; font-weight:700; color:var(--primary); margin-bottom:10px; }
     .product-notice ul { padding-left:16px; list-style:disc; }
@@ -90,20 +95,30 @@
 
     <!-- 우측 액션 -->
     <div class="header-actions">
-      <!-- 미니멀 검색 -->
+      <!-- 미니멀 검색 (데스크탑) -->
       <form id="frmSearch" class="minimal-search">
         <input type="text" name="q" placeholder="검색..." autocomplete="off">
         <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
       </form>
-      <!-- 장바구니 -->
-      <a href="../shopping/list.html" class="action-icon cart-icon" aria-label="장바구니" style="display:none;"><i class="fas fa-shopping-bag"></i></a>
-      <!-- 인증 메뉴 -->
-      <div class="header-auth-btns">
-        <a href="../login/login.html" class="auth-btn">로그인</a>
-      </div>
+      <!-- 모바일 검색 버튼 -->
+      <button id="mobileSearchBtn" class="action-icon mobile-search-btn" aria-label="검색">
+        <i class="fas fa-search"></i>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- 검색 모달 -->
+<div id="searchModal" class="search-modal" hidden>
+  <div class="search-modal-overlay"></div>
+  <div class="search-modal-content">
+    <form id="frmSearchModal" class="search-modal-form">
+      <input type="text" name="q" placeholder="검색어를 입력하세요" autocomplete="off" autofocus>
+      <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
+    </form>
+    <button id="searchModalClose" class="search-modal-close" aria-label="닫기"><i class="fas fa-times"></i></button>
+  </div>
+</div>
 
 <!-- ===========================
      [2] 메가메뉴 (Overlay)
@@ -136,17 +151,8 @@
       </ul>
     </div>
     <div class="mega-col">
-      <h3>MY PAGE</h3>
-      <ul>
-        <li><a href="../mypage/default.html">나의 정보 수정</a></li>
-        <li><a href="../mypage/default.html">비밀번호 변경</a></li>
-        <li><a href="../mypage/orders.html">주문배송조회</a></li>
-      </ul>
-    </div>
-    <div class="mega-col">
       <h3>MEMBER SHIP</h3>
       <ul>
-        <li><a href="../member/join.html">회원 가입</a></li>
         <li><a href="../member/terms.html">이용약관</a></li>
         <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
       </ul>
@@ -202,15 +208,6 @@
         <li><a href="../shopping/list.html">기타 상품</a></li>
       </ul>
     </div>
-
-    <div class="footer-col">
-      <h5>MY PAGE</h5>
-      <ul>
-        <li><a href="../mypage/default.html">나의 정보 수정</a></li>
-        <li><a href="../mypage/default.html">비밀번호 변경</a></li>
-      </ul>
-    </div>
-
     <div class="footer-col">
       <h5>CS CENTER</h5>
       <ul>
@@ -222,7 +219,6 @@
     <div class="footer-col">
       <h5>MEMBER SHIP</h5>
       <ul>
-        <li><a href="../member/join.html">회원 가입</a></li>
         <li><a href="../member/terms.html">이용약관</a></li>
         <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
       </ul>
@@ -313,15 +309,22 @@
           '<div class="category-badge-lg"><img src="../' + product.categoryIcon + '" alt="">' + product.category + '</div>' +
           '<h1 class="product-detail-name">' + product.name + '</h1>' +
           '<p class="product-detail-desc">' + product.description + '</p>' +
-          '<div class="product-detail-meta">' +
-            '<p><i class="fas fa-leaf"></i> 카테고리: ' + product.category + '</p>' +
-            '<p><i class="fas fa-truck"></i> 배송: 전국 택배 배송 (제주/도서 지역 추가 요금)</p>' +
-            '<p><i class="fas fa-info-circle"></i> 재고: 한정 수량</p>' +
-          '</div>' +
-          '<div class="product-detail-actions">' +
-            '<button class="btn-inquiry" onclick="location.href=\'../customer/inquiry.html\'"><i class="fas fa-comment"></i> 상품 문의하기</button>' +
-            '<button class="btn-catalog" onclick="location.href=\'../customer/catalog.html\'"><i class="fas fa-book"></i> 카탈로그 신청</button>' +
-          '</div>' +
+          '<h3 class="product-section-title">규격</h3>' +
+          '<table class="spec-table">' +
+            '<tr><th>상품명</th><td>' + product.name + '</td></tr>' +
+            '<tr><th>카테고리</th><td>' + product.category + '</td></tr>' +
+            '<tr><th>배송</th><td>전국 택배 배송 (제주/도서 지역 추가 요금)</td></tr>' +
+            '<tr><th>재고</th><td>한정 수량</td></tr>' +
+          '</table>' +
+          '<h3 class="product-section-title">단가</h3>' +
+          '<table class="price-table">' +
+            '<thead><tr><th>규격</th><th>단가</th><th>비고</th></tr></thead>' +
+            '<tbody>' +
+              '<tr><td>묘목</td><td>전화 문의</td><td>-</td></tr>' +
+              '<tr><td>성목</td><td>전화 문의</td><td>-</td></tr>' +
+            '</tbody>' +
+          '</table>' +
+          '<p class="price-note">* 정확한 단가는 규격 및 수량에 따라 달라질 수 있습니다. 전화 문의(1588-6891)를 이용해 주세요.</p>' +
           '<div class="product-notice">' +
             '<h4><i class="fas fa-exclamation-circle"></i> 구매 안내</h4>' +
             '<ul>' +

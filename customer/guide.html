@@ -55,20 +55,30 @@
 
     <!-- 우측 액션 -->
     <div class="header-actions">
-      <!-- 미니멀 검색 -->
+      <!-- 미니멀 검색 (데스크탑) -->
       <form id="frmSearch" class="minimal-search">
         <input type="text" name="q" placeholder="검색..." autocomplete="off">
         <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
       </form>
-      <!-- 장바구니 -->
-      <a href="../shopping/list.html" class="action-icon cart-icon" aria-label="장바구니" style="display:none;"><i class="fas fa-shopping-bag"></i></a>
-      <!-- 인증 메뉴 -->
-      <div class="header-auth-btns">
-        <a href="../login/login.html" class="auth-btn">로그인</a>
-      </div>
+      <!-- 모바일 검색 버튼 -->
+      <button id="mobileSearchBtn" class="action-icon mobile-search-btn" aria-label="검색">
+        <i class="fas fa-search"></i>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- 검색 모달 -->
+<div id="searchModal" class="search-modal" hidden>
+  <div class="search-modal-overlay"></div>
+  <div class="search-modal-content">
+    <form id="frmSearchModal" class="search-modal-form">
+      <input type="text" name="q" placeholder="검색어를 입력하세요" autocomplete="off" autofocus>
+      <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
+    </form>
+    <button id="searchModalClose" class="search-modal-close" aria-label="닫기"><i class="fas fa-times"></i></button>
+  </div>
+</div>
 
 <!-- ===========================
      [2] 메가메뉴 (Overlay)
@@ -101,17 +111,8 @@
       </ul>
     </div>
     <div class="mega-col">
-      <h3>MY PAGE</h3>
-      <ul>
-        <li><a href="../mypage/default.html">나의 정보 수정</a></li>
-        <li><a href="../mypage/default.html">비밀번호 변경</a></li>
-        <li><a href="../mypage/orders.html">주문배송조회</a></li>
-      </ul>
-    </div>
-    <div class="mega-col">
       <h3>MEMBER SHIP</h3>
       <ul>
-        <li><a href="../member/join.html">회원 가입</a></li>
         <li><a href="../member/terms.html">이용약관</a></li>
         <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
       </ul>
@@ -154,10 +155,8 @@
       <div class="guide-panel active guide-section">
         <h3>주문 방법</h3>
         <ul>
-          <li>회원가입 후 로그인하여 주문이 가능합니다.</li>
-          <li>비회원 주문은 불가하오니 반드시 회원가입을 해주세요.</li>
           <li>상품 검색 또는 카테고리를 통해 원하는 상품을 선택해 주세요.</li>
-          <li>장바구니에 담은 후 주문/결제를 진행합니다.</li>
+          <li>전화(1588-6891) 또는 상품 페이지를 통해 주문을 진행합니다.</li>
         </ul>
         <h3>수목류 주문 시 유의사항</h3>
         <ul>
@@ -250,15 +249,6 @@
         <li><a href="../shopping/list.html">기타 상품</a></li>
       </ul>
     </div>
-
-    <div class="footer-col">
-      <h5>MY PAGE</h5>
-      <ul>
-        <li><a href="../mypage/default.html">나의 정보 수정</a></li>
-        <li><a href="../mypage/default.html">비밀번호 변경</a></li>
-      </ul>
-    </div>
-
     <div class="footer-col">
       <h5>CS CENTER</h5>
       <ul>
@@ -270,7 +260,6 @@
     <div class="footer-col">
       <h5>MEMBER SHIP</h5>
       <ul>
-        <li><a href="../member/join.html">회원 가입</a></li>
         <li><a href="../member/terms.html">이용약관</a></li>
         <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
       </ul>
