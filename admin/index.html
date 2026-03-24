@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 - 코스트리</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --primary: #2D5A3D;
+      --primary-light: #3D7A55;
+      --bg: #f5f5f2;
+      --surface: #fff;
+      --dark: #1a1a1a;
+      --muted: #888;
+      --border: #e8e4df;
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--dark); font-size: 14px; }
+
+    .admin-header {
+      background: var(--primary); color: #fff; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .admin-header h1 { font-size: 18px; font-weight: 700; }
+    .admin-header a { color: rgba(255,255,255,0.7); font-size: 13px; }
+    .admin-header a:hover { color: #fff; }
+
+    .admin-body { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+
+    .admin-card {
+      background: var(--surface); border-radius: 12px; padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 24px;
+    }
+
+    .admin-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .admin-card h2 i { color: var(--primary); }
+
+    .btn-new {
+      background: var(--primary); color: #fff; border: none; padding: 8px 20px;
+      border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+      font-family: var(--font); transition: background 0.2s;
+    }
+    .btn-new:hover { background: var(--primary-light); }
+
+    .admin-table { width: 100%; border-collapse: collapse; }
+    .admin-table th { padding: 10px 12px; font-size: 12px; font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--border); text-align: left; }
+    .admin-table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+    .admin-table .actions { white-space: nowrap; }
+    .admin-table .actions button {
+      background: none; border: 1px solid #ddd; padding: 4px 10px; border-radius: 4px;
+      font-size: 12px; cursor: pointer; margin-right: 4px; font-family: var(--font); transition: all 0.2s;
+    }
+    .admin-table .actions .btn-edit { color: var(--primary); }
+    .admin-table .actions .btn-edit:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .admin-table .actions .btn-del { color: #c62828; }
+    .admin-table .actions .btn-del:hover { background: #c62828; color: #fff; border-color: #c62828; }
+
+    .cat-badge { display:inline-block; padding:2px 8px; border-radius:50px; font-size:11px; font-weight:600; }
+    .cat-공지 { background:#E8F5E9; color:#2E7D32; }
+    .cat-이벤트 { background:#FFF3E0; color:#E65100; }
+    .cat-소식 { background:#E3F2FD; color:#1565C0; }
+
+    /* 모달 */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+      z-index: 1000; align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 12px; padding: 32px; width: 90%; max-width: 560px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15); max-height: 90vh; overflow-y: auto;
+    }
+    .modal-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #555; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px;
+      font-size: 14px; font-family: var(--font); outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); }
+    .form-group textarea { height: 180px; resize: vertical; }
+    .form-check { display: flex; align-items: center; gap: 8px; }
+    .form-check input[type="checkbox"] { width: 16px; height: 16px; }
+
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+    .btn-cancel {
+      background: #f5f5f5; color: #555; border: none; padding: 10px 20px;
+      border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: var(--font);
+    }
+    .btn-save {
+      background: var(--primary); color: #fff; border: none; padding: 10px 24px;
+      border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: var(--font);
+    }
+    .btn-save:hover { background: var(--primary-light); }
+
+    .empty-msg { text-align: center; padding: 40px; color: #999; }
+
+    .thumb-img { width:48px; height:48px; object-fit:cover; border-radius:6px; background:#f5f5f5; }
+    .prod-cat { display:inline-block; padding:2px 8px; border-radius:50px; font-size:11px; font-weight:600; background:#E8F5E9; color:#2E7D32; }
+
+    .img-preview { margin-bottom:8px; }
+    .img-preview img { max-width:200px; max-height:200px; border-radius:8px; border:1px solid #ddd; object-fit:cover; }
+    .img-preview .no-img { color:#999; font-size:12px; }
+
+    .price-row { display:flex; gap:6px; margin-bottom:6px; align-items:center; }
+    .price-row input { flex:1; padding:7px 10px; border:1px solid #ddd; border-radius:6px; font-size:13px; font-family:var(--font); }
+    .price-row input:focus { border-color:var(--primary); outline:none; }
+    .price-row .btn-rm { background:#c62828; color:#fff; border:none; width:28px; height:28px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; }
+    .price-row .btn-rm:hover { background:#a01010; }
+    .price-labels { display:flex; gap:6px; margin-bottom:4px; }
+    .price-labels span { flex:1; font-size:11px; color:#888; }
+    .price-labels span:last-child { flex:0 0 28px; }
+
+    .pagination { display:flex; justify-content:center; align-items:center; gap:4px; margin-top:16px; }
+    .pagination button {
+      background:#fff; border:1px solid #ddd; padding:6px 12px; border-radius:6px;
+      font-size:13px; cursor:pointer; font-family:var(--font); transition:all 0.2s; min-width:36px;
+    }
+    .pagination button:hover { border-color:var(--primary); color:var(--primary); }
+    .pagination button.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .pagination button:disabled { opacity:0.4; cursor:default; }
+    .pagination .page-info { font-size:12px; color:var(--muted); margin:0 8px; }
+
+    /* 로그인 화면 */
+    .login-wrap {
+      display:flex; align-items:center; justify-content:center; min-height:100vh;
+      background:var(--bg);
+    }
+    .login-box {
+      background:#fff; border-radius:16px; padding:48px 40px; width:90%; max-width:400px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.08); text-align:center;
+    }
+    .login-box .login-logo { font-size:28px; font-weight:800; color:var(--primary); margin-bottom:8px; }
+    .login-box .login-logo i { margin-right:6px; }
+    .login-box .login-sub { font-size:13px; color:var(--muted); margin-bottom:32px; }
+    .login-box .form-group { text-align:left; }
+    .login-box .btn-login {
+      width:100%; background:var(--primary); color:#fff; border:none; padding:12px;
+      border-radius:8px; font-size:14px; font-weight:600; cursor:pointer;
+      font-family:var(--font); transition:background 0.2s; margin-top:8px;
+    }
+    .login-box .btn-login:hover { background:var(--primary-light); }
+    .login-box .btn-login:disabled { opacity:0.6; cursor:default; }
+    .login-error { color:#c62828; font-size:12px; margin-top:12px; min-height:18px; }
+
+    .header-right { display:flex; align-items:center; gap:16px; }
+    .btn-logout {
+      background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.8); border:1px solid rgba(255,255,255,0.3);
+      padding:5px 14px; border-radius:6px; font-size:12px; cursor:pointer; font-family:var(--font); transition:all 0.2s;
+    }
+    .btn-logout:hover { background:rgba(255,255,255,0.25); color:#fff; }
+
+    @media(max-width:600px) {
+      .admin-table .col-date { display: none; }
+      .admin-table .col-pub { display: none; }
+      .admin-table .col-thumb { display: none; }
+      .modal-box { padding: 24px 16px; }
+      .login-box { padding:32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 로그인 화면 -->
+<div id="loginWrap" class="login-wrap">
+  <div class="login-box">
+    <div class="login-logo"><i class="fas fa-leaf"></i> COSTREE</div>
+    <p class="login-sub">관리자 로그인</p>
+    <div class="form-group">
+      <label>이메일</label>
+      <input type="email" id="loginEmail" placeholder="이메일을 입력하세요" autocomplete="email">
+    </div>
+    <div class="form-group">
+      <label>비밀번호</label>
+      <input type="password" id="loginPassword" placeholder="비밀번호를 입력하세요" autocomplete="current-password">
+    </div>
+    <button class="btn-login" id="btnLogin">로그인</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<div class="admin-header" id="adminHeader" style="display:none;">
+  <h1><i class="fas fa-leaf"></i> COSTREE 관리자</h1>
+  <div class="header-right">
+    <a href="../index.html"><i class="fas fa-home"></i> 사이트로 이동</a>
+    <button class="btn-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i> 로그아웃</button>
+  </div>
+</div>
+
+<div class="admin-body" style="display:none;" id="adminBody">
+  <div class="admin-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h2><i class="fas fa-clipboard-list"></i> 게시글 관리</h2>
+      <button class="btn-new" id="btnNew"><i class="fas fa-plus"></i> 새 글 작성</button>
+    </div>
+    <div id="tableWrap">
+      <div class="empty-msg">불러오는 중...</div>
+    </div>
+  </div>
+
+  <!-- 상품 관리 카드 -->
+  <div class="admin-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h2><i class="fas fa-seedling"></i> 상품 관리</h2>
+      <button class="btn-new" id="btnNewProduct"><i class="fas fa-plus"></i> 새 상품 등록</button>
+    </div>
+    <div id="productTableWrap">
+      <div class="empty-msg">불러오는 중...</div>
+    </div>
+  </div>
+</div>
+
+<!-- 상품 작성/수정 모달 -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal-box">
+    <h3 id="prodModalTitle">새 상품 등록</h3>
+    <input type="hidden" id="prodId">
+    <div class="form-group">
+      <label>상품명</label>
+      <input type="text" id="prodName" placeholder="상품명을 입력하세요">
+    </div>
+    <div class="form-group">
+      <label>설명</label>
+      <textarea id="prodDesc" placeholder="상품 설명을 입력하세요"></textarea>
+    </div>
+    <div class="form-group">
+      <label>카테고리</label>
+      <select id="prodCategory">
+        <option value="과수/유실수">과수/유실수</option>
+        <option value="관상수/조경수">관상수/조경수</option>
+        <option value="특용수/약용수">특용수/약용수</option>
+        <option value="야생화/다육/수생">야생화/다육/수생</option>
+        <option value="구근/씨앗/모종">구근/씨앗/모종</option>
+        <option value="원예/조경/정원용품">원예/조경/정원용품</option>
+        <option value="기타상품">기타상품</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>상품 이미지</label>
+      <input type="hidden" id="prodImgUrl">
+      <div id="prodImgPreview" class="img-preview"></div>
+      <input type="file" id="prodImgFile" accept="image/*">
+    </div>
+    <div class="form-group">
+      <label>규격/단가 <button type="button" id="btnAddPrice" style="background:var(--primary);color:#fff;border:none;padding:3px 10px;border-radius:4px;font-size:12px;cursor:pointer;margin-left:8px;">+ 추가</button></label>
+      <div id="priceRows"></div>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" id="prodPublished" checked>
+      <label for="prodPublished" style="margin:0;cursor:pointer;">공개</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="btnProdCancel">취소</button>
+      <button class="btn-save" id="btnProdSave">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- 작성/수정 모달 -->
+<div class="modal-overlay" id="postModal">
+  <div class="modal-box">
+    <h3 id="modalTitle">새 글 작성</h3>
+    <input type="hidden" id="postId">
+    <div class="form-group">
+      <label>분류</label>
+      <select id="postCategory">
+        <option value="공지">공지</option>
+        <option value="이벤트">이벤트</option>
+        <option value="소식">소식</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>제목</label>
+      <input type="text" id="postTitle" placeholder="제목을 입력하세요">
+    </div>
+    <div class="form-group">
+      <label>내용</label>
+      <textarea id="postContent" placeholder="내용을 입력하세요"></textarea>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" id="postPublished" checked>
+      <label for="postPublished" style="margin:0;cursor:pointer;">공개</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="btnCancel">취소</button>
+      <button class="btn-save" id="btnSave">저장</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+
+<!-- 인증 스크립트 -->
+<script>
+(function() {
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var loginWrap = document.getElementById('loginWrap');
+  var adminHeader = document.getElementById('adminHeader');
+  var adminBody = document.getElementById('adminBody');
+  var loginError = document.getElementById('loginError');
+
+  function showAdmin() {
+    loginWrap.style.display = 'none';
+    adminHeader.style.display = 'flex';
+    adminBody.style.display = 'block';
+    window.dispatchEvent(new Event('admin-ready'));
+  }
+
+  function showLogin() {
+    loginWrap.style.display = 'flex';
+    adminHeader.style.display = 'none';
+    adminBody.style.display = 'none';
+  }
+
+  // 세션 확인
+  sb.auth.getSession().then(function(res) {
+    if (res.data.session) {
+      showAdmin();
+    }
+  });
+
+  // 로그인
+  document.getElementById('btnLogin').addEventListener('click', doLogin);
+  document.getElementById('loginPassword').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') doLogin();
+  });
+  document.getElementById('loginEmail').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('loginPassword').focus();
+  });
+
+  function doLogin() {
+    var email = document.getElementById('loginEmail').value.trim();
+    var password = document.getElementById('loginPassword').value;
+    loginError.textContent = '';
+    if (!email || !password) { loginError.textContent = '이메일과 비밀번호를 입력해주세요.'; return; }
+
+    var btn = document.getElementById('btnLogin');
+    btn.disabled = true;
+    btn.textContent = '로그인 중...';
+
+    sb.auth.signInWithPassword({ email: email, password: password }).then(function(res) {
+      btn.disabled = false;
+      btn.textContent = '로그인';
+      if (res.error) {
+        loginError.textContent = '이메일 또는 비밀번호가 틀렸습니다.';
+        return;
+      }
+      showAdmin();
+    });
+  }
+
+  // 로그아웃
+  document.getElementById('btnLogout').addEventListener('click', function() {
+    sb.auth.signOut().then(function() {
+      showLogin();
+      document.getElementById('loginEmail').value = '';
+      document.getElementById('loginPassword').value = '';
+      loginError.textContent = '';
+    });
+  });
+})();
+</script>
+
+<script>
+(function() {
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var wrap = document.getElementById('tableWrap');
+  var modal = document.getElementById('postModal');
+  var postsLoaded = false;
+
+  function formatDate(d) {
+    var dt = new Date(d);
+    return dt.getFullYear() + '.' + String(dt.getMonth()+1).padStart(2,'0') + '.' + String(dt.getDate()).padStart(2,'0');
+  }
+
+  function loadPosts() {
+    sb.from('posts').select('*').order('created_at', { ascending: false }).then(function(res) {
+      var posts = res.data || [];
+      if (posts.length === 0) {
+        wrap.innerHTML = '<div class="empty-msg">등록된 게시글이 없습니다.</div>';
+        return;
+      }
+      wrap.innerHTML =
+        '<table class="admin-table"><thead><tr>' +
+          '<th style="width:50px">ID</th><th style="width:70px">분류</th><th>제목</th>' +
+          '<th class="col-pub" style="width:50px">공개</th><th class="col-date" style="width:90px">날짜</th><th style="width:120px">관리</th>' +
+        '</tr></thead><tbody>' +
+        posts.map(function(p) {
+          return '<tr>' +
+            '<td>' + p.id + '</td>' +
+            '<td><span class="cat-badge cat-' + p.category + '">' + p.category + '</span></td>' +
+            '<td>' + p.title + '</td>' +
+            '<td class="col-pub">' + (p.is_published ? 'O' : 'X') + '</td>' +
+            '<td class="col-date">' + formatDate(p.created_at) + '</td>' +
+            '<td class="actions">' +
+              '<button class="btn-edit" data-id="' + p.id + '">수정</button>' +
+              '<button class="btn-del" data-id="' + p.id + '">삭제</button>' +
+            '</td></tr>';
+        }).join('') +
+        '</tbody></table>';
+
+      // 수정 버튼
+      wrap.querySelectorAll('.btn-edit').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var id = parseInt(this.dataset.id);
+          var post = posts.find(function(p) { return p.id === id; });
+          if (!post) return;
+          openModal(post);
+        });
+      });
+
+      // 삭제 버튼
+      wrap.querySelectorAll('.btn-del').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var id = parseInt(this.dataset.id);
+          if (!confirm('정말 삭제하시겠습니까?')) return;
+          sb.from('posts').delete().eq('id', id).then(function() { loadPosts(); });
+        });
+      });
+    });
+  }
+
+  function openModal(post) {
+    document.getElementById('modalTitle').textContent = post ? '글 수정' : '새 글 작성';
+    document.getElementById('postId').value = post ? post.id : '';
+    document.getElementById('postCategory').value = post ? post.category : '공지';
+    document.getElementById('postTitle').value = post ? post.title : '';
+    document.getElementById('postContent').value = post ? post.content : '';
+    document.getElementById('postPublished').checked = post ? post.is_published : true;
+    modal.classList.add('open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+  }
+
+  document.getElementById('btnNew').addEventListener('click', function() { openModal(null); });
+  document.getElementById('btnCancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+
+  document.getElementById('btnSave').addEventListener('click', function() {
+    var id = document.getElementById('postId').value;
+    var data = {
+      category: document.getElementById('postCategory').value,
+      title: document.getElementById('postTitle').value.trim(),
+      content: document.getElementById('postContent').value.trim(),
+      is_published: document.getElementById('postPublished').checked
+    };
+
+    if (!data.title) { alert('제목을 입력해주세요.'); return; }
+
+    var promise;
+    if (id) {
+      promise = sb.from('posts').update(data).eq('id', parseInt(id));
+    } else {
+      promise = sb.from('posts').insert(data);
+    }
+
+    promise.then(function(res) {
+      if (res.error) { alert('저장 실패: ' + res.error.message); return; }
+      closeModal();
+      loadPosts();
+    });
+  });
+
+  window.addEventListener('admin-ready', function() {
+    if (!postsLoaded) { postsLoaded = true; loadPosts(); }
+  });
+})();
+</script>
+
+<!-- 상품 관리 스크립트 -->
+<script>
+(function() {
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var wrap = document.getElementById('productTableWrap');
+  var productsLoaded = false;
+  var modal = document.getElementById('productModal');
+  var PAGE_SIZE = 10;
+  var currentPage = 0;
+  var allProducts = [];
+
+  function imgSrc(path) {
+    if (!path) return '';
+    return path.indexOf('https://') === 0 ? path : '../' + path;
+  }
+
+  var catIcons = {
+    '과수/유실수': 'refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-01.png',
+    '관상수/조경수': 'refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-02.png',
+    '특용수/약용수': 'refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-03.png',
+    '야생화/다육/수생': 'refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-04.png',
+    '구근/씨앗/모종': 'refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-05.png',
+    '원예/조경/정원용품': 'refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-06.png',
+    '기타상품': 'refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-07.png'
+  };
+
+  function formatDate(d) {
+    var dt = new Date(d);
+    return dt.getFullYear() + '.' + String(dt.getMonth()+1).padStart(2,'0') + '.' + String(dt.getDate()).padStart(2,'0');
+  }
+
+  function renderPage() {
+    var totalPages = Math.ceil(allProducts.length / PAGE_SIZE);
+    var start = currentPage * PAGE_SIZE;
+    var pageItems = allProducts.slice(start, start + PAGE_SIZE);
+
+    var html =
+      '<table class="admin-table"><thead><tr>' +
+        '<th style="width:50px">ID</th><th class="col-thumb" style="width:56px">이미지</th><th>상품명</th>' +
+        '<th style="width:110px">카테고리</th><th class="col-pub" style="width:50px">공개</th>' +
+        '<th class="col-date" style="width:90px">날짜</th><th style="width:120px">관리</th>' +
+      '</tr></thead><tbody>' +
+      pageItems.map(function(p) {
+        return '<tr>' +
+          '<td>' + p.id + '</td>' +
+          '<td class="col-thumb"><img class="thumb-img" src="' + imgSrc(p.img) + '" alt="" onerror="this.style.background=\'#e8f5e9\'"></td>' +
+          '<td>' + p.name + '</td>' +
+          '<td><span class="prod-cat">' + p.category + '</span></td>' +
+          '<td class="col-pub">' + (p.is_published ? 'O' : 'X') + '</td>' +
+          '<td class="col-date">' + formatDate(p.created_at) + '</td>' +
+          '<td class="actions">' +
+            '<button class="btn-edit" data-id="' + p.id + '">수정</button>' +
+            '<button class="btn-del" data-id="' + p.id + '">삭제</button>' +
+          '</td></tr>';
+      }).join('') +
+      '</tbody></table>';
+
+    // 페이지네이션
+    if (totalPages > 1) {
+      html += '<div class="pagination">';
+      html += '<button class="pg-prev"' + (currentPage === 0 ? ' disabled' : '') + '><i class="fas fa-chevron-left"></i></button>';
+      for (var i = 0; i < totalPages; i++) {
+        html += '<button class="pg-num' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '">' + (i + 1) + '</button>';
+      }
+      html += '<button class="pg-next"' + (currentPage === totalPages - 1 ? ' disabled' : '') + '><i class="fas fa-chevron-right"></i></button>';
+      html += '<span class="page-info">' + allProducts.length + '개 중 ' + (start + 1) + '-' + Math.min(start + PAGE_SIZE, allProducts.length) + '</span>';
+      html += '</div>';
+    }
+
+    wrap.innerHTML = html;
+
+    // 페이지네이션 이벤트
+    wrap.querySelectorAll('.pg-num').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentPage = parseInt(this.dataset.page);
+        renderPage();
+      });
+    });
+    var prevBtn = wrap.querySelector('.pg-prev');
+    if (prevBtn) prevBtn.addEventListener('click', function() { if (currentPage > 0) { currentPage--; renderPage(); } });
+    var nextBtn = wrap.querySelector('.pg-next');
+    if (nextBtn) nextBtn.addEventListener('click', function() { if (currentPage < totalPages - 1) { currentPage++; renderPage(); } });
+
+    // 수정/삭제 이벤트
+    wrap.querySelectorAll('.btn-edit').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = parseInt(this.dataset.id);
+        var prod = allProducts.find(function(p) { return p.id === id; });
+        if (!prod) return;
+        openProdModal(prod);
+      });
+    });
+
+    wrap.querySelectorAll('.btn-del').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = parseInt(this.dataset.id);
+        if (!confirm('정말 삭제하시겠습니까?')) return;
+        sb.from('products').delete().eq('id', id).then(function() { loadProducts(); });
+      });
+    });
+  }
+
+  function loadProducts() {
+    sb.from('products').select('*').order('created_at', { ascending: false }).then(function(res) {
+      allProducts = res.data || [];
+      if (allProducts.length === 0) {
+        wrap.innerHTML = '<div class="empty-msg">등록된 상품이 없습니다.</div>';
+        return;
+      }
+      // 삭제 후 현재 페이지가 범위를 넘으면 마지막 페이지로
+      var totalPages = Math.ceil(allProducts.length / PAGE_SIZE);
+      if (currentPage >= totalPages) currentPage = totalPages - 1;
+      renderPage();
+    });
+  }
+
+  var fileInput = document.getElementById('prodImgFile');
+  var preview = document.getElementById('prodImgPreview');
+  var priceRowsEl = document.getElementById('priceRows');
+
+  // 파일 선택 시 미리보기
+  fileInput.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        preview.innerHTML = '<img src="' + e.target.result + '" alt="미리보기">';
+      };
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+
+  function addPriceRow(spec, price, note) {
+    // 첫 행이면 라벨 추가
+    if (priceRowsEl.querySelectorAll('.price-row').length === 0 && !priceRowsEl.querySelector('.price-labels')) {
+      var labels = document.createElement('div');
+      labels.className = 'price-labels';
+      labels.innerHTML = '<span>규격</span><span>단가</span><span>비고</span><span></span>';
+      priceRowsEl.appendChild(labels);
+    }
+    var row = document.createElement('div');
+    row.className = 'price-row';
+    row.innerHTML =
+      '<input type="text" placeholder="규격" value="' + (spec || '') + '">' +
+      '<input type="text" placeholder="단가" value="' + (price || '') + '">' +
+      '<input type="text" placeholder="비고" value="' + (note || '') + '">' +
+      '<button type="button" class="btn-rm" title="삭제">&times;</button>';
+    row.querySelector('.btn-rm').addEventListener('click', function() {
+      row.remove();
+      if (priceRowsEl.querySelectorAll('.price-row').length === 0) {
+        var lbl = priceRowsEl.querySelector('.price-labels');
+        if (lbl) lbl.remove();
+      }
+    });
+    priceRowsEl.appendChild(row);
+  }
+
+  document.getElementById('btnAddPrice').addEventListener('click', function() {
+    addPriceRow('', '', '');
+  });
+
+  function getPrices() {
+    var rows = priceRowsEl.querySelectorAll('.price-row');
+    var arr = [];
+    rows.forEach(function(row) {
+      var inputs = row.querySelectorAll('input');
+      var spec = inputs[0].value.trim();
+      var price = inputs[1].value.trim();
+      var note = inputs[2].value.trim();
+      if (spec || price) arr.push({ spec: spec, price: price, note: note });
+    });
+    return arr;
+  }
+
+  function openProdModal(prod) {
+    document.getElementById('prodModalTitle').textContent = prod ? '상품 수정' : '새 상품 등록';
+    document.getElementById('prodId').value = prod ? prod.id : '';
+    document.getElementById('prodName').value = prod ? prod.name : '';
+    document.getElementById('prodDesc').value = prod ? (prod.description || '') : '';
+    document.getElementById('prodCategory').value = prod ? prod.category : '과수/유실수';
+    document.getElementById('prodImgUrl').value = prod ? (prod.img || '') : '';
+    document.getElementById('prodPublished').checked = prod ? prod.is_published : true;
+    fileInput.value = '';
+    if (prod && prod.img) {
+      preview.innerHTML = '<img src="' + imgSrc(prod.img) + '" alt="현재 이미지">';
+    } else {
+      preview.innerHTML = '<span class="no-img">이미지 없음</span>';
+    }
+    // 규격/단가 행 로드
+    priceRowsEl.innerHTML = '';
+    var prices = (prod && prod.prices) ? prod.prices : [];
+    if (prices.length === 0) {
+      addPriceRow('묘목', '전화 문의', '');
+      addPriceRow('성목', '전화 문의', '');
+    } else {
+      prices.forEach(function(r) { addPriceRow(r.spec, r.price, r.note); });
+    }
+    modal.classList.add('open');
+  }
+
+  function closeProdModal() {
+    modal.classList.remove('open');
+  }
+
+  document.getElementById('btnNewProduct').addEventListener('click', function() { openProdModal(null); });
+  document.getElementById('btnProdCancel').addEventListener('click', closeProdModal);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeProdModal(); });
+
+  document.getElementById('btnProdSave').addEventListener('click', function() {
+    var id = document.getElementById('prodId').value;
+    var category = document.getElementById('prodCategory').value;
+    var data = {
+      name: document.getElementById('prodName').value.trim(),
+      description: document.getElementById('prodDesc').value.trim(),
+      category: category,
+      category_icon: catIcons[category] || '',
+      is_published: document.getElementById('prodPublished').checked,
+      prices: getPrices()
+    };
+
+    if (!data.name) { alert('상품명을 입력해주세요.'); return; }
+
+    var file = fileInput.files[0];
+
+    function saveProduct(imgPath) {
+      data.img = imgPath;
+      var promise;
+      if (id) {
+        promise = sb.from('products').update(data).eq('id', parseInt(id));
+      } else {
+        promise = sb.from('products').insert(data);
+      }
+      promise.then(function(res) {
+        if (res.error) { alert('저장 실패: ' + res.error.message); return; }
+        closeProdModal();
+        loadProducts();
+      });
+    }
+
+    if (file) {
+      var fileName = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '');
+      sb.storage.from('product-images').upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      }).then(function(uploadRes) {
+        if (uploadRes.error) { alert('이미지 업로드 실패: ' + uploadRes.error.message); return; }
+        var publicUrl = SUPABASE_URL + '/storage/v1/object/public/product-images/' + fileName;
+        saveProduct(publicUrl);
+      });
+    } else {
+      saveProduct(document.getElementById('prodImgUrl').value || '');
+    }
+  });
+
+  window.addEventListener('admin-ready', function() {
+    if (!productsLoaded) { productsLoaded = true; loadProducts(); }
+  });
+})();
+</script>
+
+</body>
+</html>

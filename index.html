@@ -696,6 +696,7 @@
       <ul>
         <li><a href="customer/guide.html">이용안내</a></li>
         <li><a href="customer/faq.html">자주 묻는 질문</a></li>
+        <li><a href="board/list.html">새소식 및 이벤트</a></li>
       </ul>
     </div>
     <div class="mega-col">
@@ -950,7 +951,7 @@
           <a href="customer/faq.html">자주묻는질문</a>
           <a href="customer/guide.html">이용안내</a>
           <a href="about/company.html">회사소개</a>
-          <a href="news/notice.html">새소식</a>
+          <a href="board/list.html">새소식</a>
         </div>
       </div>
 
@@ -958,12 +959,7 @@
       <div class="info-card">
         <h4>새소식 및 이벤트</h4>
         <ul id="noticeList" class="notice-list">
-          <li><a href="news/notice.html">봄 시즌 신품종 입고 안내</a></li>
-          <li><a href="news/notice.html">3월 특가 이벤트 공지</a></li>
-          <li><a href="news/notice.html">배송 안내 (제주/도서지역)</a></li>
-          <li><a href="news/notice.html">2024 카탈로그 신청 받습니다</a></li>
-          <li><a href="news/notice.html">봄 수목 예약 판매 시작</a></li>
-          <li><a href="news/notice.html">협력생산회원 모집 안내</a></li>
+          <li style="color:#999;font-size:12px;">불러오는 중...</li>
         </ul>
         <div class="info-links">
           <a href="#" class="info-link-btn">
@@ -1008,6 +1004,7 @@
         <ul>
           <li><a href="customer/guide.html">이용안내</a></li>
           <li><a href="customer/faq.html">자주 묻는 질문</a></li>
+          <li><a href="board/list.html">새소식 및 이벤트</a></li>
         </ul>
       </div>
 
@@ -1057,10 +1054,86 @@
        [10] SCRIPTS
        =========================== -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script>
+  (function() {
+    var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    var PAGE_SIZE = 8;
+    var currentPage = 0;
+    var allProducts = [];
 
-  <!-- 모든 인터랙션은 js/main.js에서 처리 -->
+    function imgSrc(path) {
+      if (!path) return '';
+      return path.indexOf('https://') === 0 ? path : path;
+    }
+
+    function renderGrid(append) {
+      var grid = document.getElementById('productsGrid');
+      if (!grid) return;
+      if (!append) grid.innerHTML = '';
+      var start = currentPage * PAGE_SIZE;
+      var slice = allProducts.slice(start, start + PAGE_SIZE);
+      slice.forEach(function(p) {
+        var card = document.createElement('div');
+        card.className = 'product-card';
+        var iconHtml = p.category_icon
+          ? '<img src="' + p.category_icon + '" alt="" onerror="this.style.display=\'none\'">'
+          : '';
+        card.innerHTML =
+          '<a href="shopping/product.html?id=' + p.id + '">' +
+            '<div class="product-img-wrap">' +
+              '<img src="' + imgSrc(p.img) + '" alt="' + p.name + '" loading="lazy" onerror="this.style.background=\'#e8f5e9\'">' +
+            '</div>' +
+          '</a>' +
+          '<div class="product-info">' +
+            '<div class="product-name">' + p.name + '</div>' +
+            '<div class="product-desc">' + (p.description || '') + '</div>' +
+            '<div class="category-badge">' + iconHtml +
+              '<span>' + (p.category || '') + '</span>' +
+            '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+      var btn = document.getElementById('loadMoreBtn');
+      if (btn) {
+        btn.style.display = (currentPage + 1) * PAGE_SIZE < allProducts.length ? 'inline-flex' : 'none';
+      }
+    }
+
+    // 상품 로드
+    sb.from('products').select('*').eq('is_published', true)
+      .order('created_at', { ascending: false })
+      .then(function(res) {
+        allProducts = res.data || [];
+        renderGrid(false);
+        var btn = document.getElementById('loadMoreBtn');
+        if (btn) {
+          btn.addEventListener('click', function() {
+            currentPage++;
+            renderGrid(true);
+          });
+        }
+      });
+
+    // 새소식 로드
+    sb.from('posts').select('id, title, created_at').eq('is_published', true)
+      .order('created_at', { ascending: false }).limit(5)
+      .then(function(res) {
+        var list = document.getElementById('noticeList');
+        if (!list) return;
+        var posts = res.data || [];
+        if (posts.length === 0) {
+          list.innerHTML = '<li style="color:#999;font-size:12px;">등록된 소식이 없습니다.</li>';
+          return;
+        }
+        list.innerHTML = posts.map(function(p) {
+          return '<li><a href="board/view.html?id=' + p.id + '">' + p.title + '</a></li>';
+        }).join('');
+      });
+  })();
+  </script>
 
   <script type="application/ld+json">
   {

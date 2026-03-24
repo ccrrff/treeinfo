@@ -136,6 +136,7 @@
       <ul>
         <li><a href="../customer/guide.html">이용안내</a></li>
         <li><a href="../customer/faq.html">자주 묻는 질문</a></li>
+        <li><a href="../board/list.html">새소식 및 이벤트</a></li>
       </ul>
     </div>
     <div class="mega-col">
@@ -213,6 +214,7 @@
       <ul>
         <li><a href="../customer/guide.html">이용안내</a></li>
         <li><a href="../customer/faq.html">자주 묻는 질문</a></li>
+        <li><a href="../board/list.html">새소식 및 이벤트</a></li>
       </ul>
     </div>
 
@@ -275,84 +277,96 @@
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/data.js"></script>
   <script src="../js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-config.js"></script>
   <script>
   (function() {
+    var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     var params = new URLSearchParams(window.location.search);
     var id = parseInt(params.get('id'));
     var detailEl = document.getElementById('productDetail');
     var breadcrumbName = document.getElementById('breadcrumbName');
 
-    // 상품 찾기
-    var product = null;
-    for (var i = 0; i < COSTREE_PRODUCTS.length; i++) {
-      if (COSTREE_PRODUCTS[i].id === id) { product = COSTREE_PRODUCTS[i]; break; }
+    function imgSrc(path) {
+      if (!path) return '';
+      return path.indexOf('https://') === 0 ? path : '../' + path;
     }
 
-    if (!product) {
-      detailEl.innerHTML = '<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>상품을 찾을 수 없습니다</h2><p style="margin-top:12px;"><a href="list.html">상품 목록으로 돌아가기</a></p></div>';
-      return;
-    }
+    sb.from('products').select('*').eq('id', id).single().then(function(res) {
+      var product = res.data;
 
-    // 페이지 타이틀 & breadcrumb
-    document.title = product.name + ' - 코스트리';
-    breadcrumbName.textContent = product.name;
+      if (!product) {
+        detailEl.innerHTML = '<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>상품을 찾을 수 없습니다</h2><p style="margin-top:12px;"><a href="list.html">상품 목록으로 돌아가기</a></p></div>';
+        return;
+      }
 
-    // 상세 렌더링
-    detailEl.innerHTML =
-      '<div class="product-detail-wrap">' +
-        '<div class="product-detail-img">' +
-          '<img src="../' + product.img + '" alt="' + product.name + '" loading="lazy" onerror="this.style.background=\'#e8f5e9\'">' +
-        '</div>' +
-        '<div class="product-detail-info">' +
-          '<div class="category-badge-lg"><img src="../' + product.categoryIcon + '" alt="">' + product.category + '</div>' +
-          '<h1 class="product-detail-name">' + product.name + '</h1>' +
-          '<p class="product-detail-desc">' + product.description + '</p>' +
-          '<h3 class="product-section-title">규격</h3>' +
-          '<table class="spec-table">' +
-            '<tr><th>상품명</th><td>' + product.name + '</td></tr>' +
-            '<tr><th>카테고리</th><td>' + product.category + '</td></tr>' +
-            '<tr><th>배송</th><td>전국 택배 배송 (제주/도서 지역 추가 요금)</td></tr>' +
-            '<tr><th>재고</th><td>한정 수량</td></tr>' +
-          '</table>' +
-          '<h3 class="product-section-title">단가</h3>' +
-          '<table class="price-table">' +
-            '<thead><tr><th>규격</th><th>단가</th><th>비고</th></tr></thead>' +
-            '<tbody>' +
-              '<tr><td>묘목</td><td>전화 문의</td><td>-</td></tr>' +
-              '<tr><td>성목</td><td>전화 문의</td><td>-</td></tr>' +
-            '</tbody>' +
-          '</table>' +
-          '<p class="price-note">* 정확한 단가는 규격 및 수량에 따라 달라질 수 있습니다. 전화 문의(1588-6891)를 이용해 주세요.</p>' +
-          '<div class="product-notice">' +
-            '<h4><i class="fas fa-exclamation-circle"></i> 구매 안내</h4>' +
-            '<ul>' +
-              '<li>수목류 특성상 이미지와 실제 상품이 다소 다를 수 있습니다.</li>' +
-              '<li>계절·재고에 따라 품절될 수 있으니 사전 문의 바랍니다.</li>' +
-              '<li>배송 기간: 주문 후 2~5 영업일 (농번기 제외)</li>' +
-            '</ul>' +
+      // 페이지 타이틀 & breadcrumb
+      document.title = product.name + ' - 코스트리';
+      breadcrumbName.textContent = product.name;
+
+      // 상세 렌더링
+      detailEl.innerHTML =
+        '<div class="product-detail-wrap">' +
+          '<div class="product-detail-img">' +
+            '<img src="' + imgSrc(product.img) + '" alt="' + product.name + '" loading="lazy" onerror="this.style.background=\'#e8f5e9\'">' +
           '</div>' +
-        '</div>' +
-      '</div>';
+          '<div class="product-detail-info">' +
+            '<div class="category-badge-lg"><img src="' + imgSrc(product.category_icon) + '" alt="">' + product.category + '</div>' +
+            '<h1 class="product-detail-name">' + product.name + '</h1>' +
+            '<p class="product-detail-desc">' + (product.description || '') + '</p>' +
+            '<h3 class="product-section-title">규격</h3>' +
+            '<table class="spec-table">' +
+              '<tr><th>상품명</th><td>' + product.name + '</td></tr>' +
+              '<tr><th>카테고리</th><td>' + product.category + '</td></tr>' +
+              '<tr><th>배송</th><td>전국 택배 배송 (제주/도서 지역 추가 요금)</td></tr>' +
+              '<tr><th>재고</th><td>한정 수량</td></tr>' +
+            '</table>' +
+            '<h3 class="product-section-title">단가</h3>' +
+            '<table class="price-table">' +
+              '<thead><tr><th>규격</th><th>단가</th><th>비고</th></tr></thead>' +
+              '<tbody>' +
+              (function() {
+                var prices = product.prices && product.prices.length > 0
+                  ? product.prices
+                  : [{spec:'묘목',price:'전화 문의',note:'-'},{spec:'성목',price:'전화 문의',note:'-'}];
+                return prices.map(function(r) {
+                  return '<tr><td>' + (r.spec||'') + '</td><td>' + (r.price||'') + '</td><td>' + (r.note||'-') + '</td></tr>';
+                }).join('');
+              })() +
+              '</tbody>' +
+            '</table>' +
+            '<p class="price-note">* 정확한 단가는 규격 및 수량에 따라 달라질 수 있습니다. 전화 문의(1588-6891)를 이용해 주세요.</p>' +
+            '<div class="product-notice">' +
+              '<h4><i class="fas fa-exclamation-circle"></i> 구매 안내</h4>' +
+              '<ul>' +
+                '<li>수목류 특성상 이미지와 실제 상품이 다소 다를 수 있습니다.</li>' +
+                '<li>계절·재고에 따라 품절될 수 있으니 사전 문의 바랍니다.</li>' +
+                '<li>배송 기간: 주문 후 2~5 영업일 (농번기 제외)</li>' +
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
 
-    // 관련 상품 (같은 카테고리, 현재 제외, 최대 4개)
-    var related = COSTREE_PRODUCTS.filter(function(p) {
-      return p.category === product.category && p.id !== product.id;
-    }).slice(0, 4);
-
-    if (related.length > 0) {
-      document.getElementById('relatedSection').style.display = 'block';
-      document.getElementById('relatedGrid').innerHTML = related.map(function(p) {
-        return '<div class="product-card" onclick="location.href=\'product.html?id=' + p.id + '\'">' +
-          '<div class="product-img-wrap"><img src="../' + p.img + '" alt="' + p.name + '" loading="lazy" onerror="this.style.background=\'#e8f5e9\'"></div>' +
-          '<div class="product-info">' +
-            '<span class="category-badge"><img src="../' + p.categoryIcon + '" alt="">' + p.category + '</span>' +
-            '<p class="product-name">' + p.name + '</p>' +
-            '<p class="product-desc">' + p.description + '</p>' +
-          '</div></div>';
-      }).join('');
-    }
+      // 관련 상품 (같은 카테고리, 현재 제외, 최대 4개)
+      sb.from('products').select('*').eq('is_published', true)
+        .eq('category', product.category).neq('id', product.id).limit(4)
+        .then(function(relRes) {
+          var related = relRes.data || [];
+          if (related.length > 0) {
+            document.getElementById('relatedSection').style.display = 'block';
+            document.getElementById('relatedGrid').innerHTML = related.map(function(p) {
+              return '<div class="product-card" onclick="location.href=\'product.html?id=' + p.id + '\'">' +
+                '<div class="product-img-wrap"><img src="' + imgSrc(p.img) + '" alt="' + p.name + '" loading="lazy" onerror="this.style.background=\'#e8f5e9\'"></div>' +
+                '<div class="product-info">' +
+                  '<span class="category-badge"><img src="' + imgSrc(p.category_icon) + '" alt="">' + p.category + '</span>' +
+                  '<p class="product-name">' + p.name + '</p>' +
+                  '<p class="product-desc">' + (p.description || '') + '</p>' +
+                '</div></div>';
+            }).join('');
+          }
+        });
+    });
   })();
   </script>
 

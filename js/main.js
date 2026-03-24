@@ -7,89 +7,8 @@
   'use strict';
 
   /* -------------------------------------------------------
-     상품 그리드 렌더링 (data.js의 COSTREE_PRODUCTS 사용)
+     상품 그리드 - Supabase에서 로드 (index.html 인라인 스크립트에서 처리)
   ------------------------------------------------------- */
-  var PAGE_SIZE = 8;
-  var currentPage = 0;
-
-  function renderProducts(products, append) {
-    var grid = document.getElementById('productsGrid');
-    if (!grid) return;
-
-    if (!append) grid.innerHTML = '';
-
-    var start = currentPage * PAGE_SIZE;
-    var slice = products.slice(start, start + PAGE_SIZE);
-
-    slice.forEach(function (p) {
-      var card = document.createElement('div');
-      card.className = 'product-card';
-      var iconHtml = p.categoryIcon
-        ? '<img src="' + p.categoryIcon + '" alt="" onerror="this.style.display=\'none\'">'
-        : '';
-      card.innerHTML =
-        '<a href="shopping/product.html?id=' + p.id + '">' +
-          '<div class="product-img-wrap">' +
-            '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy"' +
-            ' onerror="this.style.background=\'#e8f5e9\'">' +
-          '</div>' +
-        '</a>' +
-        '<div class="product-info">' +
-          '<div class="product-name">' + p.name + '</div>' +
-          '<div class="product-desc">' + (p.description || '') + '</div>' +
-          '<div class="category-badge">' + iconHtml +
-            '<span>' + (p.category || '') + '</span>' +
-          '</div>' +
-        '</div>';
-      grid.appendChild(card);
-    });
-
-    // 더 보기 버튼 표시 여부
-    var loadMoreBtn = document.getElementById('loadMoreBtn');
-    if (loadMoreBtn) {
-      var hasMore = (currentPage + 1) * PAGE_SIZE < products.length;
-      loadMoreBtn.style.display = hasMore ? 'inline-flex' : 'none';
-    }
-  }
-
-  function initProducts() {
-    if (typeof COSTREE_PRODUCTS === 'undefined') return;
-    var grid = document.getElementById('productsGrid');
-    if (!grid || grid.children.length > 0) return;
-    renderProducts(COSTREE_PRODUCTS, false);
-
-    var loadMoreBtn = document.getElementById('loadMoreBtn');
-    if (loadMoreBtn) {
-      loadMoreBtn.addEventListener('click', function () {
-        currentPage++;
-        renderProducts(COSTREE_PRODUCTS, true);
-      });
-    }
-  }
-
-  /* -------------------------------------------------------
-     장바구니 이벤트 (이벤트 위임)
-  ------------------------------------------------------- */
-  function initCart() {
-    var grid = document.getElementById('productsGrid');
-    if (!grid) return;
-
-    grid.addEventListener('click', function (e) {
-      var btn = e.target.closest('.btn-cart');
-      if (!btn) return;
-      var id = btn.dataset.id;
-      var product = (COSTREE_PRODUCTS || []).find(function (p) { return String(p.id) === String(id); });
-      if (product) {
-        // 실제 장바구니 연동 전 임시 피드백
-        btn.textContent = '담겼습니다!';
-        btn.style.background = '#1B5E20';
-        setTimeout(function () {
-          btn.innerHTML = '<i class="fas fa-shopping-cart"></i> 장바구니 담기';
-          btn.style.background = '';
-        }, 1500);
-      }
-    });
-  }
 
   /* -------------------------------------------------------
      히어로 슬라이더 자동 재생
@@ -263,8 +182,6 @@
      DOMContentLoaded
   ------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', function () {
-    initProducts();
-    initCart();
     initHeroSlider();
     initMegaMenu();
     initCategory();
