@@ -24,24 +24,8 @@
      [1] TOP BAR & HEADER (Premium Glassmorphism)
      =========================== -->
 <header id="mainHeader" class="premium-header sticky-top">
-  <!-- 유틸리티 바 -->
-  <div class="header-top-utill">
-    <div class="utill-inner">
-      <a href="../index.html">HOME</a>
-      <a href="../login/login.html">로그인</a>
-      <a href="../member/join.html">회원가입</a>
-      <a href="../mypage/default.html">마이페이지</a>
-      <a href="../about/company.html">회사소개</a>
-    </div>
-  </div>
-
   <!-- 메인 네비게이션 -->
   <div class="header-inner">
-    <!-- 모바일 햄버거 -->
-    <button id="mobileMenu" aria-label="메뉴 열기" class="mobile-only">
-      <i class="fas fa-bars"></i>
-    </button>
-
     <!-- 로고 -->
     <a class="navbar-brand logo" href="../index.html">
       <svg class="logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,11 +57,11 @@
         <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
       </form>
       <!-- 장바구니 -->
-      <a href="../shopping/list.html" class="action-icon" aria-label="장바구니"><i class="fas fa-shopping-bag"></i></a>
-      <!-- 메가메뉴 열기 -->
-      <button id="allMenuBtn" class="action-icon" aria-label="전체메뉴">
-        <i class="fas fa-align-right"></i>
-      </button>
+      <a href="../shopping/list.html" class="action-icon cart-icon" aria-label="장바구니" style="display:none;"><i class="fas fa-shopping-bag"></i></a>
+      <!-- 인증 메뉴 -->
+      <div class="header-auth-btns">
+        <a href="../login/login.html" class="auth-btn">로그인</a>
+      </div>
     </div>
   </div>
 </header>

@@ -144,31 +144,14 @@
      메가메뉴 토글
   ------------------------------------------------------- */
   function initMegaMenu() {
-    var allMenuBtn  = document.getElementById('allMenuBtn');
-    var mobileMenu  = document.getElementById('mobileMenu');
     var megaMenu    = document.getElementById('megaMenu');
     if (!megaMenu) return;
-
-    function toggleMenu() {
-      if (megaMenu.hidden) {
-        megaMenu.hidden = false;
-        megaMenu.style.display = 'block';
-      } else {
-        megaMenu.hidden = true;
-        megaMenu.style.display = '';
-      }
-    }
-
-    if (allMenuBtn) allMenuBtn.addEventListener('click', toggleMenu);
-    if (mobileMenu) mobileMenu.addEventListener('click', toggleMenu);
 
     // 외부 클릭 시 닫기
     document.addEventListener('click', function (e) {
       if (megaMenu.hidden) return;
       var clickedInside = megaMenu.contains(e.target);
-      var clickedBtn    = (allMenuBtn && (e.target === allMenuBtn || allMenuBtn.contains(e.target)));
-      var clickedMob    = (mobileMenu && (e.target === mobileMenu || mobileMenu.contains(e.target)));
-      if (!clickedInside && !clickedBtn && !clickedMob) {
+      if (!clickedInside) {
         megaMenu.hidden = true;
         megaMenu.style.display = '';
       }
