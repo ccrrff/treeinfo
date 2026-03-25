@@ -107,6 +107,45 @@
     font-weight: 600;
 }
 
+/* 하위카테고리 */
+.sidebar-sub {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.has-sub.open .sidebar-sub {
+    max-height: 600px;
+}
+.sidebar-sub li a {
+    display: block;
+    padding: 7px 20px 7px 36px;
+    font-size: 12px;
+    color: #777;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+.sidebar-sub li a:hover,
+.sidebar-sub li a.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background: #e8f5e9;
+    font-weight: 600;
+}
+.has-sub > a::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 10px;
+    float: right;
+    transition: transform 0.3s;
+}
+.has-sub.open > a::after {
+    transform: rotate(180deg);
+}
+
 /* [4] Content Area */
 .content-area {
     background: #fff;

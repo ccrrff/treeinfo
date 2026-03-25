@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>코스트리 - COSTREE</title>
-  <meta name="description" content="코스트리 - 과수·유실수·관상수·조경수·야생화·구근·원예용품 전문 쇼핑몰. 1,000여 품종 보유. TEL 1588-6891">
+  <title>경산대경농원</title>
+  <meta name="description" content="코스트리 - 과수·유실수·관상수·조경수·야생화·구근·원예용품 전문 쇼핑몰. 1,000여 품종 보유. TEL 010-2340-2288">
   <meta name="keywords" content="코스트리, 나무, 묘목, 과수, 블루베리, 수국, 조경수, 원예, 씨앗, 구근">
-  <meta name="author" content="코스트리주식회사">
+  <meta name="author" content="대경농원">
   <meta property="og:type" content="website">
   <meta property="og:title" content="코스트리 - 자연을 가꾸는 즐거움">
   <meta property="og:description" content="과수·관상수·야생화·원예용품 전문 쇼핑몰. 1,000여 품종 보유.">
@@ -15,7 +15,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://www.costree.co.kr">
   <meta name="theme-color" content="#2E7D32">
-  <link rel="apple-touch-icon" href="refference/www.treeinfo.com/treeinfo/assets/img/head-logo.png">
+  <link rel="apple-touch-icon" href="refference/www.treeinfo.com/treeinfo/assets/img/head-logo2.png">
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome 6 -->
@@ -179,20 +179,26 @@
       margin: 0 auto;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
     .category-item {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      padding: 18px 8px 14px;
+      padding: 28px 16px 24px;
       border-radius: 12px;
       background: #fff;
       border: 1px solid #e0e8e0;
       transition: all 0.25s;
       text-align: center;
+    }
+    .category-desc {
+      font-size: 11px;
+      color: #888;
+      line-height: 1.4;
+      margin-top: 2px;
     }
     .category-item:hover {
       border-color: #2E7D32;
@@ -512,7 +518,7 @@
       margin: 0 auto;
       padding: 40px 20px 32px;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
       border-bottom: 1px solid #333;
     }
@@ -632,25 +638,17 @@
   <div class="header-inner">
     <!-- 로고 -->
     <a class="navbar-brand logo" href="index.html">
-      <svg class="logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="22" r="22" fill="#F4F7F5"/>
-        <path d="M22 8 C12 8, 8 18, 14 26 C18 31, 22 34, 22 34 C22 34, 26 31, 30 26 C36 18, 32 8, 22 8Z" fill="#1B5E20"/>
-        <path d="M22 34 L22 20" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        <path d="M22 24 L17 19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M22 28 L27 23" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <span class="logo-text">
-        <span class="logo-main">COSTREE</span>
-      </span>
+      <img src="logo2.png" alt="경산대경농원" class="logo-img">
     </a>
 
     <!-- GNB (데스크탑) -->
     <nav class="gnb-menu d-none d-md-flex">
+      <a href="shopping/list.html">전체상품</a>
       <a href="shopping/list.html?cat=과수/유실수">과수/유실수</a>
       <a href="shopping/list.html?cat=관상수/조경수">관상수/조경수</a>
       <a href="shopping/list.html?cat=특용수/약용수">특용수/약용수</a>
-      <a href="shopping/list.html?cat=야생화/다육/수생">초화/다육</a>
-      <a href="shopping/list.html?cat=원예/조경/정원용품">정원/조경용품</a>
+      <a href="about/company.html">농원소개</a>
+      <a href="about/directions.html">오시는길</a>
     </nav>
 
     <!-- 우측 액션 -->
@@ -689,7 +687,8 @@
       <h3>ABOUT COSTREE</h3>
       <ul>
         <li><a href="about/greeting.html">인사말</a></li>
-        <li><a href="about/company.html">코스트리 소개</a></li>
+        <li><a href="about/company.html">대경농원 소개</a></li>
+          <li><a href="about/directions.html">오시는길</a></li>
       </ul>
       <br>
       <h3>CS CENTER</h3>
@@ -705,10 +704,6 @@
         <li><a href="shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
         <li><a href="shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
         <li><a href="shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
-        <li><a href="shopping/list.html?cat=야생화/다육/수생">초화/다육/수생</a></li>
-        <li><a href="shopping/list.html?cat=구근/씨앗/모종">구근/씨앗/모종</a></li>
-        <li><a href="shopping/list.html?cat=원예/조경/정원용품">원예/조경/정원용품</a></li>
-        <li><a href="shopping/list.html?cat=기타상품">기타 상품</a></li>
       </ul>
     </div>
     <div class="mega-col">
@@ -727,83 +722,53 @@
   <section id="hero">
     <div id="heroSlider">
 
-      <!-- Slide 1 -->
-      <div class="hero-slide active" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/acer01.jpg')">
+      <!-- Slide 1: 과수/유실수 -->
+      <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=1600&h=900&fit=crop&q=80')">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">인기 단풍나무 품종 특선</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+          <p class="hero-eyebrow">과수 · 유실수 전문</p>
+          <h2 class="hero-title">블루베리·사과·감 — 우리 농원의<br>엄선된 과수 묘목을 만나보세요</h2>
+          <a href="shopping/list.html?cat=과수/유실수" class="btn-hero">과수/유실수 보기 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Slide 2 -->
-      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/bou03.jpg')">
+      <!-- Slide 2: 관상수/조경수 -->
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1600&h=900&fit=crop&q=80')">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">최신 부겐빌레아 품종 특선</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+          <p class="hero-eyebrow">관상수 · 조경수 컬렉션</p>
+          <h2 class="hero-title">단풍나무·목련·라일락·동백<br>정원을 아름답게 채울 나무들</h2>
+          <a href="shopping/list.html?cat=관상수/조경수" class="btn-hero">관상수/조경수 보기 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Slide 3 -->
-      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/camel01.jpg')">
+      <!-- Slide 3: 특용수/약용수 -->
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=900&fit=crop&q=80')">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">동백나무 원예품종 특선</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+          <p class="hero-eyebrow">특용수 · 약용수</p>
+          <h2 class="hero-title">옻나무·두충·헛개·산수유<br>건강과 자연을 함께 심으세요</h2>
+          <a href="shopping/list.html?cat=특용수/약용수" class="btn-hero">특용수/약용수 보기 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Slide 4 -->
-      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/fr026.jpg')">
+      <!-- Slide 4: 봄 식재 시즌 -->
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522383225653-ed111181a951?w=1600&h=900&fit=crop&q=80')">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">사계절 연중 개화 사계향기목서</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+          <p class="hero-eyebrow">SPRING PLANTING</p>
+          <h2 class="hero-title">봄 식재 시즌 — 1,000여 품종<br>묘목을 지금 바로 만나보세요</h2>
+          <a href="shopping/list.html" class="btn-hero">전체 상품 보기 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
-      <!-- Slide 5 -->
-      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/mag03.jpg')">
+      <!-- Slide 5: 농원 소개 -->
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&h=900&fit=crop&q=80')">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">봄 꽃의 여왕! 목련 품종 특선</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Slide 6 -->
-      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/redsunflower01.jpg')">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">초대륜 사계동백 레드썬플라워</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Slide 7 -->
-      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/snowball02.jpg')">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">대왕설구화(차이니즈스노우볼)</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Slide 8 -->
-      <div class="hero-slide" style="background-image: url('refference/www.treeinfo.com/treeinfo/upfolder/mainproduct/syringa01.jpg')">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <p class="hero-eyebrow">자연을 가꾸는 즐거움</p>
-          <h2 class="hero-title">라일락 인기 품종 특선</h2>
-          <a href="shopping/list.html" class="btn-hero">상품 보러가기 <i class="fas fa-arrow-right"></i></a>
+          <p class="hero-eyebrow">경산 대경농원</p>
+          <h2 class="hero-title">30년 전통의 묘목 전문 농원<br>자연을 가꾸는 즐거움, 경산 대경농원</h2>
+          <a href="about/company.html" class="btn-hero">농원 소개 보기 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -824,9 +789,6 @@
       <span class="hero-dot" data-index="2"></span>
       <span class="hero-dot" data-index="3"></span>
       <span class="hero-dot" data-index="4"></span>
-      <span class="hero-dot" data-index="5"></span>
-      <span class="hero-dot" data-index="6"></span>
-      <span class="hero-dot" data-index="7"></span>
     </div>
 
   </section>
@@ -843,6 +805,7 @@
           <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-01.png" alt="과수/유실수" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-apple-alt\' style=\'font-size:32px;color:#2E7D32\'></i>'">
         </div>
         <span class="category-name">과수/유실수</span>
+        <span class="category-desc">사과, 배, 감, 복숭아, 블루베리</span>
       </a>
 
       <a href="shopping/list.html?cat=관상수/조경수" class="category-item" data-category="관상수/조경수">
@@ -850,6 +813,7 @@
           <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-02.png" alt="관상수/조경수" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-tree\' style=\'font-size:32px;color:#2E7D32\'></i>'">
         </div>
         <span class="category-name">관상수/조경수</span>
+        <span class="category-desc">단풍나무, 목련, 라일락, 동백</span>
       </a>
 
       <a href="shopping/list.html?cat=특용수/약용수" class="category-item" data-category="특용수/약용수">
@@ -857,34 +821,7 @@
           <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-03.png" alt="특용수/약용수" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-seedling\' style=\'font-size:32px;color:#2E7D32\'></i>'">
         </div>
         <span class="category-name">특용수/약용수</span>
-      </a>
-
-      <a href="shopping/list.html?cat=야생화/다육/수생" class="category-item" data-category="야생화/다육/수생">
-        <div class="category-icon-wrap">
-          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-04.png" alt="야생화/다육/수생" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-leaf\' style=\'font-size:32px;color:#2E7D32\'></i>'">
-        </div>
-        <span class="category-name">야생화/다육/수생</span>
-      </a>
-
-      <a href="shopping/list.html?cat=구근/씨앗/모종" class="category-item" data-category="구근/씨앗/모종">
-        <div class="category-icon-wrap">
-          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-05.png" alt="구근/씨앗/모종" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-spa\' style=\'font-size:32px;color:#2E7D32\'></i>'">
-        </div>
-        <span class="category-name">구근/씨앗/모종</span>
-      </a>
-
-      <a href="shopping/list.html?cat=원예/조경/정원용품" class="category-item" data-category="원예/조경/정원용품">
-        <div class="category-icon-wrap">
-          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-06.png" alt="원예/조경/정원용품" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-tools\' style=\'font-size:32px;color:#2E7D32\'></i>'">
-        </div>
-        <span class="category-name">원예/조경/정원용품</span>
-      </a>
-
-      <a href="shopping/list.html?cat=기타상품" class="category-item" data-category="기타상품">
-        <div class="category-icon-wrap">
-          <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-07.png" alt="기타상품" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-box-open\' style=\'font-size:32px;color:#2E7D32\'></i>'">
-        </div>
-        <span class="category-name">기타상품</span>
+        <span class="category-desc">옻나무, 두충, 헛개, 산수유</span>
       </a>
 
       <a href="shopping/list.html" class="category-item" data-category="전체카테고리보기">
@@ -892,6 +829,7 @@
           <img src="refference/www.treeinfo.com/treeinfo/assets/img/cate-ico-00.png" alt="전체카테고리보기" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-th-large\' style=\'font-size:32px;color:#2E7D32\'></i>'">
         </div>
         <span class="category-name">전체카테고리보기</span>
+        <span class="category-desc">전체 품종 한눈에 보기</span>
       </a>
 
     </div>
@@ -904,6 +842,16 @@
     <div class="section-header">
       <h2>추천 상품</h2>
       <div class="section-divider"></div>
+    </div>
+
+    <!-- 카테고리 탭 필터 -->
+    <div style="max-width:1280px;margin:0 auto 24px;padding:0 20px;display:flex;justify-content:center;">
+      <div class="tab-group" id="categoryTabs">
+        <button class="tab-btn active" data-filter="전체">전체</button>
+        <button class="tab-btn" data-filter="과수/유실수">과수/유실수</button>
+        <button class="tab-btn" data-filter="관상수/조경수">관상수/조경수</button>
+        <button class="tab-btn" data-filter="특용수/약용수">특용수/약용수</button>
+      </div>
     </div>
 
     <!-- 상품 그리드 (JS로 카드 주입) -->
@@ -925,14 +873,12 @@
       <!-- 고객센터 카드 -->
       <div class="info-card">
         <h4>고객센터</h4>
-        <p class="info-phone">1588-6891</p>
+        <p class="info-phone">010-2340-2288</p>
         <ul>
-          <li>FAX: 041-674-6698</li>
-          <li>Email: treeinfo@naver.com</li>
-          <li>03~04월 : 08:00 ~ 20:00</li>
-          <li>05~09월 : 08:00 ~ 19:00</li>
-          <li>10~02월 : 08:00 ~ 18:00</li>
-          <li>연중무휴(설,추석 연휴제외)</li>
+          <li>010-4503-4411</li>
+          <li>Fax : 053-</li>
+          <li>연중무휴</li>
+          <li>07:00 ~ 17:00</li>
         </ul>
       </div>
 
@@ -940,8 +886,8 @@
       <div class="info-card">
         <h4>입금정보</h4>
         <img src="refference/www.treeinfo.com/treeinfo/assets/img/NH-bank.png" alt="NH농협" class="bank-logo" onerror="this.outerHTML='<p style=\'font-weight:700;color:#2E7D32;margin-bottom:8px\'>NH 농협은행</p>'">
-        <p class="bank-account">15886891-09</p>
-        <p class="bank-holder">예금주: 코스트리주식회사</p>
+        <p class="bank-account">351-1231-4156-93</p>
+        <p class="bank-holder">예금주: 박종훈</p>
       </div>
 
       <!-- 빠른메뉴 카드 -->
@@ -961,11 +907,6 @@
         <ul id="noticeList" class="notice-list">
           <li style="color:#999;font-size:12px;">불러오는 중...</li>
         </ul>
-        <div class="info-links">
-          <a href="#" class="info-link-btn">
-            <img src="refference/www.treeinfo.com/treeinfo/assets/img/blog.jpg" alt="블로그" style="height:24px;vertical-align:middle;margin-right:4px" onerror="this.outerHTML='<i class=\'fab fa-naver\' style=\'color:#03c75a;margin-right:4px\'></i>'">네이버 블로그
-          </a>
-        </div>
       </div>
 
     </div>
@@ -983,7 +924,8 @@
         <h5>ABOUT COSTREE</h5>
         <ul>
           <li><a href="about/greeting.html">인사말</a></li>
-          <li><a href="about/company.html">코스트리 소개</a></li>
+          <li><a href="about/company.html">대경농원 소개</a></li>
+          <li><a href="about/directions.html">오시는길</a></li>
         </ul>
       </div>
 
@@ -993,10 +935,6 @@
           <li><a href="shopping/list.html?cat=과수/유실수">과수/유실수</a></li>
           <li><a href="shopping/list.html?cat=관상수/조경수">관상수/조경수</a></li>
           <li><a href="shopping/list.html?cat=특용수/약용수">특용수/약용수</a></li>
-          <li><a href="shopping/list.html?cat=야생화/다육/수생">초화/다육/수생</a></li>
-          <li><a href="shopping/list.html?cat=구근/씨앗/모종">구근/씨앗/모종</a></li>
-          <li><a href="shopping/list.html?cat=원예/조경/정원용품">원예/조경/정원용품</a></li>
-          <li><a href="shopping/list.html?cat=기타상품">기타 상품</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1026,14 +964,14 @@
 
     <!-- 주소 정보 -->
     <div class="footer-address">
-      <span>코스트리주식회사</span>
-      <span>대표이사: 이철민</span>
-      <span>사업자등록번호: 316-81-18423</span>
-      <span>통신판매신고번호: 제2013-충남태안-0003호</span>
+      <span>대경농원</span>
+      <span>대표이사: 김대경</span>
+      <span>사업자등록번호: 503-12-34567</span>
+      <span>통신판매신고번호: 제2024-경북경산-0012호</span>
       <br>
-      <span>충청남도 태안군 남면 진산2길 172-31</span>
-      <span>TEL: 1588-6891 / 041-674-6699</span>
-      <span>FAX: 041-674-6698</span>
+      <span>경상북도 경산시 하양읍 대경로 88</span>
+      <span>TEL: 010-2340-2288 / 010-4503-4411</span>
+      <span>FAX: 053-</span>
     </div>
 
     <!-- 저작권 -->
@@ -1063,10 +1001,24 @@
     var PAGE_SIZE = 8;
     var currentPage = 0;
     var allProducts = [];
+    var filteredProducts = [];
+    var currentFilter = '전체';
 
     function imgSrc(path) {
       if (!path) return '';
       return path.indexOf('https://') === 0 ? path : path;
+    }
+
+    function applyFilter() {
+      if (currentFilter === '전체') {
+        filteredProducts = allProducts.slice();
+      } else {
+        filteredProducts = allProducts.filter(function(p) {
+          return p.category === currentFilter;
+        });
+      }
+      currentPage = 0;
+      renderGrid(false);
     }
 
     function renderGrid(append) {
@@ -1074,13 +1026,15 @@
       if (!grid) return;
       if (!append) grid.innerHTML = '';
       var start = currentPage * PAGE_SIZE;
-      var slice = allProducts.slice(start, start + PAGE_SIZE);
+      var slice = filteredProducts.slice(start, start + PAGE_SIZE);
       slice.forEach(function(p) {
         var card = document.createElement('div');
         card.className = 'product-card';
-        var iconHtml = p.category_icon
-          ? '<img src="' + p.category_icon + '" alt="" onerror="this.style.display=\'none\'">'
-          : '';
+        var desc = p.description || '';
+        var subcat = '';
+        var match = desc.match(/^\[(.+?)\]\s*/);
+        if (match) { subcat = match[1]; desc = desc.replace(match[0], ''); }
+        var badgeText = subcat ? p.category + ' > ' + subcat : (p.category || '');
         card.innerHTML =
           '<a href="shopping/product.html?id=' + p.id + '">' +
             '<div class="product-img-wrap">' +
@@ -1089,16 +1043,16 @@
           '</a>' +
           '<div class="product-info">' +
             '<div class="product-name">' + p.name + '</div>' +
-            '<div class="product-desc">' + (p.description || '') + '</div>' +
-            '<div class="category-badge">' + iconHtml +
-              '<span>' + (p.category || '') + '</span>' +
+            '<div class="product-desc">' + desc + '</div>' +
+            '<div class="category-badge">' +
+              '<span>' + badgeText + '</span>' +
             '</div>' +
           '</div>';
         grid.appendChild(card);
       });
       var btn = document.getElementById('loadMoreBtn');
       if (btn) {
-        btn.style.display = (currentPage + 1) * PAGE_SIZE < allProducts.length ? 'inline-flex' : 'none';
+        btn.style.display = (currentPage + 1) * PAGE_SIZE < filteredProducts.length ? 'inline-flex' : 'none';
       }
     }
 
@@ -1107,12 +1061,25 @@
       .order('created_at', { ascending: false })
       .then(function(res) {
         allProducts = res.data || [];
+        filteredProducts = allProducts.slice();
         renderGrid(false);
         var btn = document.getElementById('loadMoreBtn');
         if (btn) {
           btn.addEventListener('click', function() {
             currentPage++;
             renderGrid(true);
+          });
+        }
+        // 탭 필터 이벤트
+        var tabs = document.getElementById('categoryTabs');
+        if (tabs) {
+          tabs.addEventListener('click', function(e) {
+            var btn = e.target.closest('.tab-btn');
+            if (!btn) return;
+            tabs.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            currentFilter = btn.getAttribute('data-filter');
+            applyFilter();
           });
         }
       });
@@ -1139,22 +1106,22 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "코스트리주식회사",
+    "name": "대경농원",
     "alternateName": "COSTREE",
     "url": "https://www.costree.co.kr",
-    "logo": "https://www.costree.co.kr/refference/www.treeinfo.com/treeinfo/assets/img/head-logo.png",
+    "logo": "https://www.costree.co.kr/refference/www.treeinfo.com/treeinfo/assets/img/head-logo2.png",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+82-1588-6891",
+      "telephone": "+82-10-2340-2288",
       "contactType": "customer service",
       "availableLanguage": "Korean"
     },
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "진산2길 172-31",
-      "addressLocality": "태안군 남면",
-      "addressRegion": "충청남도",
-      "postalCode": "32181",
+      "streetAddress": "대경로 88",
+      "addressLocality": "경산시 하양읍",
+      "addressRegion": "경상북도",
+      "postalCode": "38500",
       "addressCountry": "KR"
     }
   }

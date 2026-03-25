@@ -3,36 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>게시글 - 경산대경농원</title>
+  <title>오시는길 - 경산대경농원</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/shared.css">
   <link rel="stylesheet" href="../css/subpage.css">
-  <style>
-    .post-header { margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid #eee; }
-    .post-cat { display:inline-block; padding:3px 12px; border-radius:50px; font-size:12px; font-weight:600; margin-bottom:8px; }
-    .post-cat.공지 { background:#E8F5E9; color:#2E7D32; }
-    .post-cat.이벤트 { background:#FFF3E0; color:#E65100; }
-    .post-cat.소식 { background:#E3F2FD; color:#1565C0; }
-    .post-title { font-size:24px; font-weight:800; color:#1A1A1A; margin:8px 0; }
-    .post-date { font-size:13px; color:#999; }
-    .post-body { font-size:15px; line-height:2; color:#444; padding:24px 0; min-height:200px; white-space:pre-wrap; }
-    .post-nav { display:flex; justify-content:center; gap:12px; margin-top:32px; }
-    .post-nav a { display:inline-flex; align-items:center; gap:6px; padding:10px 24px; border:1px solid #ddd; border-radius:8px; font-size:13px; font-weight:600; color:#555; transition:all 0.2s; }
-    .post-nav a:hover { border-color:var(--primary); color:var(--primary); }
-    .not-found { text-align:center; padding:80px 20px; color:#999; }
-    .not-found i { font-size:48px; color:#ddd; display:block; margin-bottom:16px; }
-  </style>
 </head>
 <body>
 
+<!-- ===========================
+     [1] TOP BAR & HEADER (Premium Glassmorphism)
+     =========================== -->
 <header id="mainHeader" class="premium-header sticky-top">
+  <!-- 메인 네비게이션 -->
   <div class="header-inner">
+    <!-- 로고 -->
     <a class="navbar-brand logo" href="../index.html">
       <img src="../logo2.png" alt="경산대경농원" class="logo-img">
     </a>
+
+    <!-- GNB (데스크탑) -->
     <nav class="gnb-menu d-none d-md-flex">
       <a href="../shopping/list.html">전체상품</a>
       <a href="../shopping/list.html?cat=과수/유실수">과수/유실수</a>
@@ -41,11 +33,15 @@
       <a href="../about/company.html">농원소개</a>
       <a href="../about/directions.html">오시는길</a>
     </nav>
+
+    <!-- 우측 액션 -->
     <div class="header-actions">
+      <!-- 미니멀 검색 (데스크탑) -->
       <form id="frmSearch" class="minimal-search">
         <input type="text" name="q" placeholder="검색..." autocomplete="off">
         <button type="submit" aria-label="검색"><i class="fas fa-search"></i></button>
       </form>
+      <!-- 모바일 검색 버튼 -->
       <button id="mobileSearchBtn" class="action-icon mobile-search-btn" aria-label="검색">
         <i class="fas fa-search"></i>
       </button>
@@ -53,6 +49,7 @@
   </div>
 </header>
 
+<!-- 검색 모달 -->
 <div id="searchModal" class="search-modal" hidden>
   <div class="search-modal-overlay"></div>
   <div class="search-modal-content">
@@ -64,6 +61,9 @@
   </div>
 </div>
 
+<!-- ===========================
+     [2] 메가메뉴 (Overlay)
+     =========================== -->
 <nav id="megaMenu" class="premium-mega-menu" hidden>
   <div class="mega-inner">
     <div class="mega-col">
@@ -99,23 +99,58 @@
   </div>
 </nav>
 
+  <!-- 페이지 히어로 배너 -->
   <section class="subpage-hero">
     <div class="container-main">
-      <p class="hero-breadcrumb"><a href="../index.html">HOME</a> <span class="sep">&gt;</span> <a href="list.html">새소식 및 이벤트</a> <span class="sep">&gt;</span> <span id="breadcrumbTitle">게시글</span></p>
-      <h1 class="hero-page-title">새소식 및 이벤트</h1>
+      <p class="hero-breadcrumb"><a href="../index.html">HOME</a> <span class="sep">&gt;</span> ABOUT <span class="sep">&gt;</span> 오시는길</p>
+      <h1 class="hero-page-title">오시는길</h1>
     </div>
   </section>
 
+  <!-- 메인 콘텐츠 -->
   <main class="subpage-main">
     <div class="container-main">
-      <div class="content-area" id="postDetail">
-        <div style="text-align:center;padding:40px;color:#999;">불러오는 중...</div>
+      <div class="subpage-layout">
+
+        <aside class="sidebar">
+          <nav class="sidebar-nav">
+            <h3 class="sidebar-title">ABOUT COSTREE</h3>
+            <ul class="sidebar-menu">
+              <li><a href="greeting.html">인사말</a></li>
+              <li><a href="company.html">대경농원 소개</a></li>
+              <li><a href="directions.html" class="active">오시는길</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="content-area">
+          <h2 class="page-title">오시는길</h2>
+
+          <div style="margin-bottom:32px;">
+            <img src="../maps.jpg" alt="코스트리 오시는길 지도" style="width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+          </div>
+
+          <h3 style="font-size:16px;font-weight:700;color:#2E7D32;margin-bottom:16px;">주소 및 연락처</h3>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:32px;">
+            <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;width:120px;text-align:left;">주소</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">경상북도 경산시 하양읍 대경로 88</td></tr>
+            <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">전화</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">010-2340-2288 / 010-4503-4411</td></tr>
+            <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">팩스</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">053-</td></tr>
+            <tr><th style="background:#f1f8e9;padding:12px 16px;border:1px solid #c8e6c9;font-size:14px;font-weight:600;color:#1B5E20;text-align:left;">이메일</th><td style="padding:12px 16px;border:1px solid #e0e0e0;font-size:14px;">dkfarm@naver.com</td></tr>
+          </table>
+        </div>
+
       </div>
     </div>
   </main>
 
+<!-- ===========================
+     FOOTER
+     =========================== -->
 <footer id="mainFooter">
+
+  <!-- 사이트맵 -->
   <div class="footer-sitemap">
+
     <div class="footer-col">
       <h5>ABOUT COSTREE</h5>
       <ul>
@@ -124,6 +159,7 @@
         <li><a href="../about/directions.html">오시는길</a></li>
       </ul>
     </div>
+
     <div class="footer-col">
       <h5>SHOPPING</h5>
       <ul>
@@ -140,6 +176,7 @@
         <li><a href="../board/list.html">새소식 및 이벤트</a></li>
       </ul>
     </div>
+
     <div class="footer-col">
       <h5>MEMBER SHIP</h5>
       <ul>
@@ -147,67 +184,68 @@
         <li><a href="../member/privacy.html">개인정보 보호정책</a></li>
       </ul>
     </div>
-  </div>
+
+  </div><!-- /footer-sitemap -->
+
+  <!-- 정책 링크 -->
   <div class="footer-policy">
     <a href="../member/privacy.html">개인정보취급방침</a>
     <a href="#">이메일주소 수집거부</a>
   </div>
+
+  <!-- 주소 정보 -->
   <div class="footer-address">
-    <span>대경농원</span> <span>대표이사: 김대경</span>
-    <span>사업자등록번호: 503-12-34567</span> <span>통신판매신고번호: 제2024-경북경산-0012호</span>
+    <span>대경농원</span>
+    <span>대표이사: 김대경</span>
+    <span>사업자등록번호: 503-12-34567</span>
+    <span>통신판매신고번호: 제2024-경북경산-0012호</span>
     <br>
-    <span>경상북도 경산시 하양읍 대경로 88</span> <span>TEL: 010-2340-2288 / 010-4503-4411</span> <span>FAX: 053-</span>
+    <span>경상북도 경산시 하양읍 대경로 88</span>
+    <span>TEL: 010-2340-2288 / 010-4503-4411</span>
+    <span>FAX: 053-</span>
   </div>
-  <div class="footer-copyright">Copyrights &copy; COSTREE Horticulture Seeds Agricultural Co. All rights reserved</div>
+
+  <!-- 저작권 -->
+  <div class="footer-copyright">
+    Copyrights &copy; COSTREE Horticulture Seeds Agricultural Co. All rights reserved
+  </div>
+
 </footer>
 
-<button id="scrollTop" class="scroll-top-btn" title="맨 위로" aria-label="맨 위로"><i class="fas fa-chevron-up"></i></button>
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" class="scroll-top-btn" title="맨 위로" aria-label="맨 위로">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
 <script>
+// Scroll to top
 (function() {
   var btn = document.getElementById('scrollTop');
   if (!btn) return;
-  window.addEventListener('scroll', function() { btn.classList.toggle('visible', window.scrollY > 300); });
-  btn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 })();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../js/supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/main.js"></script>
 <script>
+// Mega menu toggle
 (function() {
-  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  var id = new URLSearchParams(window.location.search).get('id');
-  var el = document.getElementById('postDetail');
-
-  if (!id) {
-    el.innerHTML = '<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>게시글을 찾을 수 없습니다</h2><p style="margin-top:12px;"><a href="list.html" style="color:var(--primary);font-weight:600;">목록으로 돌아가기</a></p></div>';
-    return;
-  }
-
-  sb.from('posts').select('*').eq('id', id).single().then(function(res) {
-    var post = res.data;
-    if (!post) {
-      el.innerHTML = '<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>게시글을 찾을 수 없습니다</h2><p style="margin-top:12px;"><a href="list.html" style="color:var(--primary);font-weight:600;">목록으로 돌아가기</a></p></div>';
-      return;
-    }
-
-    document.title = post.title + ' - 경산대경농원';
-    document.getElementById('breadcrumbTitle').textContent = post.title;
-
-    var date = new Date(post.created_at);
-    var dateStr = date.getFullYear() + '.' + String(date.getMonth()+1).padStart(2,'0') + '.' + String(date.getDate()).padStart(2,'0');
-
-    el.innerHTML =
-      '<div class="post-header">' +
-        '<span class="post-cat ' + post.category + '">' + post.category + '</span>' +
-        '<h1 class="post-title">' + post.title + '</h1>' +
-        '<span class="post-date"><i class="far fa-calendar-alt"></i> ' + dateStr + '</span>' +
-      '</div>' +
-      '<div class="post-body">' + (post.content || '') + '</div>' +
-      '<div class="post-nav">' +
-        '<a href="list.html"><i class="fas fa-list"></i> 목록으로</a>' +
-      '</div>';
+  var btn = document.getElementById('allMenuBtn');
+  var menu = document.getElementById('megaMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function() {
+    menu.classList.toggle('open');
+    menu.hidden = !menu.classList.contains('open');
   });
 })();
 </script>
