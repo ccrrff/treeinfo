@@ -205,9 +205,12 @@
 
   <!-- 상품 관리 카드 -->
   <div class="admin-card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-      <h2><i class="fas fa-seedling"></i> 상품 관리</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h2 style="margin-bottom:0;"><i class="fas fa-seedling"></i> 상품 관리</h2>
       <button class="btn-new" id="btnNewProduct"><i class="fas fa-plus"></i> 새 상품 등록</button>
+    </div>
+    <div style="margin-bottom:12px;">
+      <input type="text" id="productSearch" placeholder="상품명 검색..." style="width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:var(--font);outline:none;">
     </div>
     <div id="productTableWrap">
       <div class="empty-msg">불러오는 중...</div>
@@ -277,6 +280,30 @@
         <option value="구근/씨앗/모종">구근/씨앗/모종</option>
         <option value="원예/조경/정원용품">원예/조경/정원용품</option>
         <option value="기타상품">기타상품</option>
+      </select>
+    </div>
+    <div class="form-group" id="subCatGroup" style="display:none;">
+      <label>하위카테고리</label>
+      <select id="prodSubCategory">
+        <option value="">-- 선택 안 함 --</option>
+        <option value="사과">사과</option>
+        <option value="감">감</option>
+        <option value="대추">대추</option>
+        <option value="복숭아">복숭아</option>
+        <option value="자두">자두</option>
+        <option value="살구">살구</option>
+        <option value="포도">포도</option>
+        <option value="체리">체리</option>
+        <option value="블루베리">블루베리</option>
+        <option value="밤">밤</option>
+        <option value="매실">매실</option>
+        <option value="호두">호두</option>
+        <option value="배">배</option>
+        <option value="모과">모과</option>
+        <option value="앵두">앵두</option>
+        <option value="무화과">무화과</option>
+        <option value="키위">키위</option>
+        <option value="석류">석류</option>
       </select>
     </div>
     <div class="form-group">
@@ -524,6 +551,7 @@
   var PAGE_SIZE = 10;
   var currentPage = 0;
   var allProducts = [];
+  var searchKeyword = '';
 
   function imgSrc(path) {
     if (!path) return '';
@@ -546,9 +574,14 @@
   }
 
   function renderPage() {
-    var totalPages = Math.ceil(allProducts.length / PAGE_SIZE);
+    var filtered = searchKeyword
+      ? allProducts.filter(function(p) { return p.name.toLowerCase().indexOf(searchKeyword.toLowerCase()) !== -1; })
+      : allProducts;
+    var totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+    if (currentPage >= totalPages && totalPages > 0) currentPage = totalPages - 1;
+    if (totalPages === 0) currentPage = 0;
     var start = currentPage * PAGE_SIZE;
-    var pageItems = allProducts.slice(start, start + PAGE_SIZE);
+    var pageItems = filtered.slice(start, start + PAGE_SIZE);
 
     var html =
       '<table class="admin-table"><thead><tr>' +
@@ -579,7 +612,7 @@
         html += '<button class="pg-num' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '">' + (i + 1) + '</button>';
       }
       html += '<button class="pg-next"' + (currentPage === totalPages - 1 ? ' disabled' : '') + '><i class="fas fa-chevron-right"></i></button>';
-      html += '<span class="page-info">' + allProducts.length + '개 중 ' + (start + 1) + '-' + Math.min(start + PAGE_SIZE, allProducts.length) + '</span>';
+      html += '<span class="page-info">' + filtered.length + '개 중 ' + (start + 1) + '-' + Math.min(start + PAGE_SIZE, filtered.length) + '</span>';
       html += '</div>';
     }
 
@@ -691,10 +724,29 @@
     document.getElementById('prodModalTitle').textContent = prod ? '상품 수정' : '새 상품 등록';
     document.getElementById('prodId').value = prod ? prod.id : '';
     document.getElementById('prodName').value = prod ? prod.name : '';
-    document.getElementById('prodDesc').value = prod ? (prod.description || '') : '';
-    document.getElementById('prodCategory').value = prod ? prod.category : '과수/유실수';
+    var category = prod ? prod.category : '과수/유실수';
+    document.getElementById('prodCategory').value = category;
     document.getElementById('prodImgUrl').value = prod ? (prod.img || '') : '';
     document.getElementById('prodPublished').checked = prod ? prod.is_published : true;
+
+    // 하위카테고리 파싱 및 description 처리
+    var desc = prod ? (prod.description || '') : '';
+    var subCatGroup = document.getElementById('subCatGroup');
+    var subCatEl = document.getElementById('prodSubCategory');
+    if (category === '과수/유실수') {
+      subCatGroup.style.display = '';
+      var subMatch = desc.match(/^\[([^\]]+)\]\s*/);
+      if (subMatch) {
+        subCatEl.value = subMatch[1];
+        desc = desc.replace(/^\[[^\]]+\]\s*/, '');
+      } else {
+        subCatEl.value = '';
+      }
+    } else {
+      subCatGroup.style.display = 'none';
+      subCatEl.value = '';
+    }
+    document.getElementById('prodDesc').value = desc;
     fileInput.value = '';
     if (prod && prod.img) {
       preview.innerHTML = '<img src="' + imgSrc(prod.img) + '" alt="현재 이미지">';
@@ -717,6 +769,23 @@
     modal.classList.remove('open');
   }
 
+  // 카테고리 변경 시 하위카테고리 표시/숨김
+  document.getElementById('prodCategory').addEventListener('change', function() {
+    var subGroup = document.getElementById('subCatGroup');
+    if (this.value === '과수/유실수') {
+      subGroup.style.display = '';
+    } else {
+      subGroup.style.display = 'none';
+      document.getElementById('prodSubCategory').value = '';
+    }
+  });
+
+  document.getElementById('productSearch').addEventListener('input', function() {
+    searchKeyword = this.value.trim();
+    currentPage = 0;
+    renderPage();
+  });
+
   document.getElementById('btnNewProduct').addEventListener('click', function() { openProdModal(null); });
   document.getElementById('btnProdCancel').addEventListener('click', closeProdModal);
   modal.addEventListener('click', function(e) { if (e.target === modal) closeProdModal(); });
@@ -724,9 +793,14 @@
   document.getElementById('btnProdSave').addEventListener('click', function() {
     var id = document.getElementById('prodId').value;
     var category = document.getElementById('prodCategory').value;
+    var desc = document.getElementById('prodDesc').value.trim();
+    var subCat = document.getElementById('prodSubCategory').value;
+    if (category === '과수/유실수' && subCat) {
+      desc = '[' + subCat + '] ' + desc;
+    }
     var data = {
       name: document.getElementById('prodName').value.trim(),
-      description: document.getElementById('prodDesc').value.trim(),
+      description: desc,
       category: category,
       category_icon: catIcons[category] || '',
       is_published: document.getElementById('prodPublished').checked,
